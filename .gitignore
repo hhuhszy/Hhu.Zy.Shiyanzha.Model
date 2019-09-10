@@ -1,3 +1,4 @@
 /bin/Logs/*
 /bin/*.pdb
 /bin/*.xml
+/bin/debug.log
