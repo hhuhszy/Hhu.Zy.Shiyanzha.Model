@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>水闸工程</Name>
+    <Assembly>"Hstar.RevitAddIn.Sluice.dll"</Assembly>
+    <ClientId>F18F4A2A-996D-45EA-9849-2FA86FCCD838</ClientId>
+    <FullClassName>Hstar.RevitAddIn.Sluice.App</FullClassName>
+    <VendorId>ADSK</VendorId>
+    <VendorDescription>Autodesk, www.autodesk.com</VendorDescription>
+  </AddIn>
+</RevitAddIns>
