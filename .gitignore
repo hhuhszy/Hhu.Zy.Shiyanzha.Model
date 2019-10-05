@@ -1,2 +1,3 @@
-!bin/repair.bat
 bin/*
+!bin/repair.bat
+
