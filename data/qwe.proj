@@ -1,0 +1,41 @@
+{
+"Name": "qwe",
+"Data": [
+{
+"Name": "LOCK_CHAMBER_BOTTOM_PLATE",
+"Location": "50,200",
+"Size": "500,2000",
+"HasParting": false
+},
+{
+"Name": "BLANKET",
+"Location": "550,200",
+"Size": "500,2000",
+"HasParting": true
+},
+{
+"Name": "LOCK_CHAMBER_BOTTOM_PLATE",
+"Location": "1052,200",
+"Size": "500,2000",
+"HasParting": false
+},
+{
+"Name": "BOTTOM_PROTECTION",
+"Location": "1552,450",
+"Size": "300,1500",
+"HasParting": true
+},
+{
+"Name": "LOCK_CHAMBER_BOTTOM_PLATE",
+"Location": "1854,200",
+"Size": "500,2000",
+"HasParting": false
+},
+{
+"Name": "LOCK_CHAMBER_BOTTOM_PLATE",
+"Location": "2354,100",
+"Size": "400,2200",
+"HasParting": false
+}
+]
+}

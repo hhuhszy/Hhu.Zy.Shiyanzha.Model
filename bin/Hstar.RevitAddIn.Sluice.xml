@@ -1,0 +1,570 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Hstar.RevitAddIn.Sluice</name>
+    </assembly>
+    <members>
+        <member name="T:Hstar.RevitAddIn.Sluice.App">
+            <summary>
+            程序入口点
+            </summary>
+            <remarks>
+            <para>通过<see cref="P:Hstar.RevitAddIn.Sluice.App.Instance" />来访问成员. </para>
+            <para>1.<b>基本流程</b></para>
+            <para>
+            1.1.添加外部命令只需继承<see cref="T:Hstar.RevitAddIn.Sluice.ExternalCommands.BaseExternalCommand" />,重写Execute方法,注意如果
+            要在其中打开窗口,需要添加一个静态变量标志着其是否打开,以确保只有一个窗口被打开;
+            </para>
+            <para>
+            1.2.在窗口的后台代码中要调用revit的api时,如果有合法的context则通过<see cref="P:Hstar.RevitAddIn.Sluice.ExternalCommands.BaseExternalCommand.UiApplication" />
+            来访问api,如果没有合法的context则通过<see cref="P:Hstar.RevitAddIn.Sluice.ExternalCommands.BaseExternalCommand.ExternalEventHelper" /> 来访问api;
+            </para>
+            <para>1.3.创建外部命令后,需要在<see cref="T:Hstar.RevitAddIn.Sluice.App" />的私有方法CreateRibbonUI中绑定它与RibbonPanel.</para>
+            <para>2.<b>代码规范</b></para>
+            <para>2.1.具体的某个功能尽量实现接口分离,接口放在Hstar.RevitAddIn.Sluice.Services中,而实际实现类放在/Services中;</para>
+            <para>2.2.理想的情况是表层业务逻辑代码在<see cref="T:Hstar.WpfLibrary.ICommands.RelayCommand" />中搭配实际执行代码在/Services中.</para>
+            <para>3.<b>创建视图</b></para>
+            <para>3.1.视图由一个容器<see cref="T:Hstar.WpfLibrary.Views.BaseWindow" />和视图切换器<see cref="T:Hstar.WpfLibrary.Views.ViewHost" />和视图内容<see cref="T:Hstar.WpfLibrary.Views.BaseView`1" />组成;</para>
+            <para> 3.2.需要创建一个ViewModel和一个类继承<see cref="T:Hstar.WpfLibrary.Views.BaseView`1" />,和一个对应的<see cref="T:Hstar.WpfLibrary.ViewModels.ApplicationView" /></para>
+            <para>
+            3.3.在<see cref="T:Hstar.WpfLibrary.Views.BaseView`1" />中写UI和业务逻辑,注意xaml中不要忘记添加x:TypeArguments;
+            </para>
+            <para>
+            3.4.最后在<see cref="M:Hstar.RevitAddIn.Sluice.ExternalCommands.BaseExternalCommand.Execute" />中新建<see cref="T:Hstar.WpfLibrary.Views.BaseWindow" />实例,传入
+            <see cref="T:Hstar.WpfLibrary.ViewModels.ApplicationView" />参数,绑定revit主窗口句柄,然后调用Show方法.
+            </para>
+            <para></para>
+            </remarks>
+            <example>
+            <para> 以FooTest为例,参照步骤说明结合实际文件操作即可了解整体开发流程.</para>
+            <para>1.<b>新建视图模型viewModel</b></para>
+            <para>
+            Hstar.WpfLibrary项目中在ViewModels/Test文件夹下添加FooTestVm.此时FooTestVm的TestCommand是空的或测试代码(用#if
+            Test预编译符号扩起来,预编译不懂可百度).
+            </para>
+            <para>2.<b>新建视图view</b></para>
+            <para>Hstar.WpfLibrary项目中在Views/Test文件夹下添加FooTest.xaml.注意xaml中添加x:TypeArgument标记和构造器一般写两个,一个无参,一个接受FooTestVm为参数.</para>
+            <para>3.<b>关联实际view与ApplicationView枚举</b></para>
+            <para>修改Hstar.WpfLibrary项目ViewModels/Application文件夹下ApplicationView和Hstar.WpfLibrary项目Helpers文件夹下ApplicationViewHelper.前者添加FooTest枚举值,后者在ToBaseView和ToApplicationView方法中添加FooTest和FooTest枚举值的互相转换方法.</para>
+            <para>4.<b>测试UI</b></para>
+            <para>到Hstar.WpfLibrary.Test中测试页面显示,Hstar.WpfLibrary的项目属性中编译一栏的条件编译符号添加Test.在Hstar.WpfLibrary.Test的App.xaml.cs的OnStartUp中写测试代码.</para>
+            <para>
+            <i>
+            <b>
+            <font color="#FF0000">1~4主要为UI开发.此时FooTestVm几乎是空的,并且UI运行于wpf项目Hstar.WpfLibrary.Test,不需要启动Revit,方便调整UI.</font>
+            </b>
+            </i>
+            </para>
+            <para>5.<b>建立服务接口和服务模型</b></para>
+            <para>
+            在Hstar.RevitAddIn.Sluice.Services项目中的Test文件夹下创建FooRevitModel和IFooService,注意不能引用任何revit
+            api.
+            </para>
+            <para>6.<b>创建外部命令</b></para>
+            <para>在Hstar.RevitAddIn.Sluice中/ExternalCommands/Test文件夹下添加FooTestCmd,继承自BaseExternalCommand.如果FooTestCmd预定每次仅打开一个窗口,可以调用BaseWindow的IsOpen这个静态方法检查FooTest是否曾经打开过;此外,为了访问BaseExternalCommand</para>
+            <para>资源,建议添加一个静态的Instance访问路径.</para>
+            <para>7.<b>实现服务接口</b></para>
+            <para>
+            在Hstar.RevitAddIn.Sluice中Services/Test文件夹下添加FooServiceImpl.cs,实现5中的IFooService.实现IFooService时可以调用FooTestCmd.Instance.XX来获得revit
+            api使用路径.
+            </para>
+            <para>8.<b>注册服务接口</b></para>
+            <para>在StartUp中添加IFooService服务.</para>
+            <para>9.<b>使用服务接口</b></para>
+            <para>回到Hstar.WpfLibrary中的FooTestVm中,在其中调用DIFactory.Service&lt;IFooService&gt;的相关方法.</para>
+            <para>10.<b>添加窗口启动代码</b></para>
+            <para>回到Hstar.RevitAddIn.Sluice中,在FooTestCmd启动窗口,新建BaseWindow实例,传入ApplicationView.FooTest构造参数,绑定revit窗口句柄.</para>
+            <para>11.<b>添加RevitRibbon</b></para>
+            <para>在Hstar.RevitAddIn.Sluice中App.cs里的CreateRibbonUi私有方法中添加panel或者在StartUp中添加.</para>
+            <para>
+            <b>
+            <font color="#FF0000">
+            6~11主要为后台逻辑开发.最需要注意的是服务接口的签名不能有revit
+            api,此时的开发需要启动revit 进行调试,比较费时,因此在第5步时UI开发人员和后台开发人员要协商好.
+            </font>
+            </b>
+            </para>
+            </example>
+            <seealso cref="T:Hstar.RevitAddIn.Sluice.ExternalCommands.BaseExternalCommand" />
+            <seealso cref="T:Hstar.RevitAddIn.Sluice.Helper.ExternalEventHelper" />
+            <seealso cref="T:Hstar.WpfLibrary.Views.BaseView" />
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.App.#ctor">
+            <summary>
+            default ctor
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.App.Instance">
+            <summary>
+            <see cref="T:Hstar.RevitAddIn.Sluice.App" />的唯一实例
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.App.UiControlledApplication">
+            <summary>
+            获得应用的<see cref="T:Autodesk.Revit.UI.UIControlledApplication" />.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.App.ProjectInformationEntity">
+            <summary>
+            <see cref="P:Autodesk.Revit.DB.Document.ProjectInformation" />外部存储数据
+            </summary>
+            <seealso cref="P:Hstar.RevitAddIn.Sluice.App.ProjectInformationSchema" />
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.App.ProjectInformationSchema">
+            <summary>
+            <see cref="P:Autodesk.Revit.DB.Document.ProjectInformation" />外部存储数据模型
+            </summary>
+            <remarks>
+            GUID为C1F31702-DD13-4D9F-8FE9-CD59EFC2DDB5,添加了一个字段"插件可用性",
+            类型为bool,如果打开的文档使用的模板文件存在于规定的template目录下则为true否则
+            为false
+            </remarks>
+            <seealso cref="P:Hstar.RevitAddIn.Sluice.App.ProjectInformationEntity" />
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.App.MainWindowHandle">
+            <summary>
+            revit主窗口句柄
+            </summary>
+            <remarks>
+            新建窗口时,为了保证其保持在revit主窗口"上面",则需要设置它的
+            Owner为<see cref="P:Hstar.RevitAddIn.Sluice.App.MainWindowHandle" />
+            </remarks>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.App.OnStartup(Autodesk.Revit.UI.UIControlledApplication)">
+            <inheritdoc />
+            <remarks>会在此处创建ribbon UI</remarks>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.App.OnShutdown(Autodesk.Revit.UI.UIControlledApplication)">
+            <inheritdoc />
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.DI.DI">
+            <summary>
+            A shorthand access class to get DI services with nice clean short code
+            </summary>
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.DI.ServiceCollectionExtension">
+            <summary>
+            Extension of service collection.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.DI.ServiceCollectionExtension.AddBasicViewModel(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Add basic view model
+            </summary>
+            <param name="sc"></param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.DI.ServiceCollectionExtension.AddDefaultComponentLibServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            添加构件库默认基础服务.
+            </summary>
+            <param name="sc"></param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.DI.ServiceCollectionExtension.AddDefaultInfrastructureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            添加默认的基础服务.
+            </summary>
+            <param name="sc"></param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.ExternalCommands.ComponentLibraryCmd">
+            <summary>
+            构件库外部命令.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.ExternalCommands.ComponentLibraryCmd.Instance">
+            <summary>
+            Gets or sets access to <see cref="T:Hstar.RevitAddIn.Sluice.ExternalCommands.ComponentLibraryCmd" /> instance.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.ExternalCommands.ComponentLibraryCmd.Execute">
+            <inheritdoc />
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.ExternalCommands.TemplateArrangeCmd">
+            <summary>
+            模板快速布置外部命令.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.ExternalCommands.TemplateArrangeCmd.Instance">
+            <summary>
+            Gets or sets access to <see cref="T:Hstar.RevitAddIn.Sluice.ExternalCommands.TemplateArrangeCmd" /> instance.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.ExternalCommands.TemplateArrangeCmd.Execute">
+            <inheritdoc />
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.ExternalCommands.FooTestCmd">
+            <summary>
+            Foo Test External Command.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.ExternalCommands.FooTestCmd.Instance">
+            <summary>
+            Gets static access to this instance.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.ExternalCommands.FooTestCmd.Execute">
+            <inheritdoc />
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.ExternalCommands.BaseExternalCommand">
+            <summary>
+            base class implements <seealso cref="T:Autodesk.Revit.UI.IExternalCommand" />
+            </summary>
+            <remarks>
+            如果是常规引用,通过<see cref="P:Hstar.RevitAddIn.Sluice.ExternalCommands.BaseExternalCommand.UiApplication" />来获得api情境,
+            如果是外部事件,通过<see cref="P:Hstar.RevitAddIn.Sluice.ExternalCommands.BaseExternalCommand.ExternalEventHelper" />来获得api情境
+            </remarks>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.ExternalCommands.BaseExternalCommand.UiApplication">
+            <summary>
+            access to revit <seealso cref="T:UIApplication" />
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.ExternalCommands.BaseExternalCommand.ExternalEventHelper">
+            <summary>
+            external event helper
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.ExternalCommands.BaseExternalCommand.BaseWindow">
+            <summary>
+            Gets or sets this command's window.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.ExternalCommands.BaseExternalCommand.Execute(Autodesk.Revit.UI.ExternalCommandData,System.String@,Autodesk.Revit.DB.ElementSet)">
+            <inheritdoc />
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.ExternalCommands.BaseExternalCommand.Execute">
+            <summary>
+            impl code
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Helper.Const">
+            <summary>
+            globally const argument
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Helper.Const.Assembly">
+            <summary>
+            assembly path
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Helper.Const.Root">
+            <summary>
+            root path
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Helper.Const.Template">
+            <summary>
+            template path
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Helper.Const.Family">
+            <summary>
+            family path
+            </summary>
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Helper.DocumentExtension">
+            <summary>
+            Extension of <see cref="T:Autodesk.Revit.DB.Document" />.
+            </summary>
+            <seealso cref="T:Autodesk.Revit.DB.Document" />
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Helper.DocumentExtension.FindElementByName(Autodesk.Revit.DB.Document,System.Type,System.String)">
+            <summary>
+            Retrieve a database element
+            of the given type and name (first match).
+            </summary>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Helper.DocumentExtension.Execute(Autodesk.Revit.DB.Document,System.Action{Autodesk.Revit.DB.Transaction},System.String)">
+            <summary>
+            <see cref="T:Autodesk.Revit.DB.Document" />执行事务的扩展方法.
+            </summary>
+            <param name="doc">Required. </param>
+            <param name="execute">Required. </param>
+            <param name="name">Optional. The default value is "transaction".</param>
+            <remarks>
+            此扩展方法仅支持<see cref="T:Autodesk.Revit.DB.Transaction" />不支持<see cref="T:Autodesk.Revit.DB.SubTransaction" />和
+            <see cref="T:Autodesk.Revit.DB.TransactionGroup" />.
+            </remarks>
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Helper.ExternalEventHelper">
+            <summary>
+            a helper class for revit external event.
+            </summary>
+            <example>
+            MyExternalCommand.Instance.ExternalEventHelper.Invoke(uiApp =&gt; {//do
+            something})
+            </example>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Helper.ExternalEventHelper.#ctor">
+            <summary>
+            default ctor
+            </summary>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Helper.ExternalEventHelper.Invoke(System.Action{Autodesk.Revit.UI.UIApplication},System.String)">
+            <summary>
+            invoke certain handler
+            </summary>
+            <param name="handler">the handler added to the handler queues</param>
+            <param name="name">the human readable name if not set will be set a new guid</param>
+        </member>
+        <member name="E:Hstar.RevitAddIn.Sluice.Helper.ExternalEventHelper.Start">
+            <summary>
+            subscribe to start event
+            </summary>
+        </member>
+        <member name="E:Hstar.RevitAddIn.Sluice.Helper.ExternalEventHelper.End">
+            <summary>
+            subscribe to end event
+            </summary>
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Helper.ExternalEventHelper.ExternalEventCommon">
+            <summary>
+            a common implementation of <see cref="T:IExternalEventHandler" /> which maintain
+            a queue to execute and expose a start and end event for user;
+            this queue will automatically enqueue and dequeue handler;
+            so we can avoid annoying subscribe and unsubscribe code.
+            </summary>
+        </member>
+        <member name="E:Hstar.RevitAddIn.Sluice.Helper.ExternalEventHelper.ExternalEventCommon.Start">
+            <summary>
+            subscribe to start event
+            </summary>
+        </member>
+        <member name="E:Hstar.RevitAddIn.Sluice.Helper.ExternalEventHelper.ExternalEventCommon.End">
+            <summary>
+            subscribe to end event
+            </summary>
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Helper.ExternalEventArg">
+            <summary>
+            event args for revit external event
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Helper.ExternalEventArg.App">
+            <summary>
+            access to revit db
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Helper.ExternalEventArg.Name">
+            <summary>
+            human readable name
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Helper.ExternalEventArg.Cancelled">
+            <summary>
+            indicates whether it should been cancelled
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Helper.ExternalEventArg.Data">
+            <summary>
+            store data when execute external command
+            </summary>
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Helper.FamilyInstanceExtension">
+            <summary>
+            extension of <see cref="T:FamilyInstance" />
+            </summary>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Helper.FamilyInstanceExtension.GetParameterByName(Autodesk.Revit.DB.FamilyInstance,System.String)">
+            <summary>
+            根据参数名获得parameter
+            @i: 实例参数
+            @s: 类型参数
+            @bi: 实例,内建参数
+            @bs: 类型,内建参数
+            </summary>
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Helper.FamilySymbolExtension">
+            <summary>
+            extension of <see cref="T:Autodesk.Revit.DB.FamilySymbol" />
+            </summary>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Helper.FamilySymbolExtension.GetParameterByName(Autodesk.Revit.DB.FamilySymbol,System.String)">
+            <summary>
+            根据参数名获得parameter
+            @i: 实例参数
+            @s: 类型参数
+            @bi: 实例,内建参数
+            @bs: 类型,内建参数
+            </summary>
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Helper.DefaultCmdAvailability">
+            <summary>
+            default implementation of <see cref="T:Autodesk.Revit.UI.IExternalCommandAvailability" />
+            </summary>
+            <remarks>读取当前文档的ProjectInformation的相应Entity,读取字段"插件可用性"</remarks>
+            <seealso cref="P:Hstar.RevitAddIn.Sluice.App.ProjectInformationEntity" />
+            <seealso cref="P:Hstar.RevitAddIn.Sluice.App.ProjectInformationSchema" />
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Helper.DefaultCmdAvailability.IsCommandAvailable(Autodesk.Revit.UI.UIApplication,Autodesk.Revit.DB.CategorySet)">
+            <inheritdoc />
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Helper.ParameterExtension">
+            <summary>
+            extension of <see cref="T:Autodesk.Revit.DB.Parameter" />
+            </summary>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Helper.ParameterExtension.GetParameterDisPlayValue(Autodesk.Revit.DB.Parameter)">
+            <summary>
+            获取转换成display值的parameter的值
+            </summary>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Helper.ParameterExtension.GetParameterInnerValue(Autodesk.Revit.DB.Parameter)">
+            <summary>
+            获取未转换成display值的parameter的值
+            </summary>
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Helper.RibbonPanelExtension">
+            <summary>
+            <see cref="T:Autodesk.Revit.UI.RibbonPanel" />的扩展方法
+            </summary>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Helper.RibbonPanelExtension.AddPushButtonToRibbonPanel``1(Autodesk.Revit.UI.RibbonPanel,System.String,System.String,System.String,System.String,System.Type)">
+            <summary>
+            为<see cref="T:Autodesk.Revit.UI.RibbonPanel" />添加一个<see cref="T:Autodesk.Revit.UI.PushButton" />
+            </summary>
+            <typeparam name="T">实现了<see cref="T:Autodesk.Revit.UI.IExternalCommand" />的类</typeparam>
+            <param name="ownerRibbon">该button的宿主Ribbon</param>
+            <param name="innerName">button内部标识名</param>
+            <param name="text">button下方文本</param>
+            <param name="toolTip">button提示文字</param>
+            <param name="imagePath">button图标位置,相对项目根目录</param>
+            <param name="availability">type of <see cref="T:Autodesk.Revit.UI.IExternalCommandAvailability" /></param>
+            <returns></returns>
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Services.DefaultCheckLoadedService">
+            <inheritdoc />
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.DefaultCheckLoadedService.IsLoaded(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Services.DefaultPromptUserLoadFamilyService">
+            <inheritdoc />
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.DefaultPromptUserLoadFamilyService.LoadFamily(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Services.DefaultPromptUserPlaceService">
+            <inheritdoc />
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.DefaultPromptUserPlaceService.PlaceFamily(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Services.DefaultFileSystemService">
+            <summary>
+            管理项目文档目录服务的默认实现.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.DefaultFileSystemService.GetRoot">
+            <inheritdoc />
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.DefaultFileSystemService.GetTemplateRoot">
+            <inheritdoc />
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.DefaultFileSystemService.GetFamilyRoot">
+            <inheritdoc />
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.DefaultFileSystemService.GetDataRoot">
+            <inheritdoc />
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Services.DefaultCTypeRepoService">
+            <summary>
+            默认的<see cref="T:Hstar.RevitAddIn.Sluice.Services.CustomRevitType" />仓储服务.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.DefaultCTypeRepoService.#ctor(Hstar.RevitAddIn.Sluice.Services.BaseJsonService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Hstar.RevitAddIn.Sluice.Services.DefaultCTypeRepoService" /> class.
+            </summary>
+            <param name="jsonService"></param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.DefaultCTypeRepoService.GetByName(Hstar.RevitAddIn.Sluice.Services.BuiltInCType)">
+            <inheritdoc />
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.DefaultCTypeRepoService.GetParameterMap(Hstar.RevitAddIn.Sluice.Services.CustomRevitType)">
+            <inheritdoc />
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.DefaultCTypeRepoService.ReLoad">
+            <inheritdoc />
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.DefaultCTypeRepoService.Save2File(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Services.DefaultJsonService">
+            <summary>
+            默认的json服务实现.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.DefaultJsonService.GetStream">
+            <inheritdoc />
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.DefaultJsonService.GetModel``1(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.DefaultJsonService.IsValidModel``1(Newtonsoft.Json.Linq.JToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.DefaultJsonService.GetErrMsg">
+            <inheritdoc />
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.DefaultJsonService.Write``1(``0,System.String,Newtonsoft.Json.Formatting)">
+            <inheritdoc />
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Services.FooServiceImpl">
+            <summary>
+            一个<see cref="T:Hstar.RevitAddIn.Sluice.Services.IFooService" />的实现.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.FooServiceImpl.Place(Hstar.RevitAddIn.Sluice.Services.FooRevitModel)">
+            <inheritdoc />
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.FooServiceImpl.Adjust(Hstar.RevitAddIn.Sluice.Services.FooRevitModel)">
+            <inheritdoc />
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.StartUp">
+            <summary>
+            启动配置服务.
+            </summary>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.StartUp.AddStartUpService(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            添加启动配置服务.
+            </summary>
+            <param name="sc"></param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.StartUp.CreateRibbon(Autodesk.Revit.UI.UIControlledApplication,System.String)">
+            <summary>
+            添加revit ribbon按钮
+            </summary>
+            <param name="application"></param>
+            <param name="tabName"></param>
+            <remarks></remarks>
+        </member>
+    </members>
+</doc>

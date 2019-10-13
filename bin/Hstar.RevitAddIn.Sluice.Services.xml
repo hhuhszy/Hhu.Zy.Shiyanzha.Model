@@ -1,0 +1,343 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Hstar.RevitAddIn.Sluice.Services</name>
+    </assembly>
+    <members>
+        <member name="T:Hstar.RevitAddIn.Sluice.Services.ICheckLoadedFamily">
+            <summary>
+            检查某个族文件是否已载入到当前的项目中.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.ICheckLoadedFamily.IsLoaded(System.String)">
+            <summary>
+            判断某个族文件是否已载入.
+            </summary>
+            <param name="familyName"></param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Services.IFileSystem">
+            <summary>
+            获得项目文档目录信息.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.IFileSystem.GetRoot">
+            <summary>
+            获得安装根目录.
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.IFileSystem.GetTemplateRoot">
+            <summary>
+            获得样板文件目录.
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.IFileSystem.GetFamilyRoot">
+            <summary>
+            获得族库目录.
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.IFileSystem.GetDataRoot">
+            <summary>
+            获得Data目录
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Services.IPromptUserLoadFamily">
+            <summary>
+            使用Revit自带的载入族功能.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.IPromptUserLoadFamily.LoadFamily(System.String)">
+            <summary>
+            载入族文件,弹窗提示用户如何载入.
+            </summary>
+            <param name="filename"></param>
+            <remarks></remarks>
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Services.IPromptUserPlaceInstance">
+            <summary>
+            使用Revit自带的放置族功能.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.IPromptUserPlaceInstance.PlaceFamily(System.String)">
+            <summary>
+            放置族.
+            </summary>
+            <param name="familyName"></param>
+            <remarks></remarks>
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Services.BuiltInCType">
+            <summary>
+            <see cref="T:Hstar.RevitAddIn.Sluice.Services.CustomRevitType" />的合理的枚举.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Hstar.RevitAddIn.Sluice.Services.BuiltInCType.LOCK_CHAMBER_PIER_MIDDLE">
+            <summary>
+            闸室中墩
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Hstar.RevitAddIn.Sluice.Services.BuiltInCType.LOCK_CHAMBER_PIER_SIDE">
+            <summary>
+            闸室边墩
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Hstar.RevitAddIn.Sluice.Services.BuiltInCType.LOCK_CHAMBER_BOTTOM_PLATE">
+            <summary>
+            闸室底板
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Hstar.RevitAddIn.Sluice.Services.BuiltInCType.WINGWALL">
+            <summary>
+            翼墙
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Hstar.RevitAddIn.Sluice.Services.BuiltInCType.QUAYWALL">
+            <summary>
+            岸墙
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Hstar.RevitAddIn.Sluice.Services.BuiltInCType.STILLING_BASIN">
+            <summary>
+            消力池
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Hstar.RevitAddIn.Sluice.Services.BuiltInCType.BOTTOM_PROTECTION">
+            <summary>
+            护底
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Hstar.RevitAddIn.Sluice.Services.BuiltInCType.SCOUR_STONE_CAGES">
+            <summary>
+            防冲槽
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Hstar.RevitAddIn.Sluice.Services.BuiltInCType.SEA_MANTLE">
+            <summary>
+            海幔
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Hstar.RevitAddIn.Sluice.Services.BuiltInCType.SLOPE_PROTECTION">
+            <summary>
+            护坡
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Hstar.RevitAddIn.Sluice.Services.BuiltInCType.BLANKET">
+            <summary>
+            铺盖
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Services.CustomRevitType">
+            <summary>
+            为了区分不同的常规模型/结构模型,使用内建类型参数 -> 型号(其BuiltInParameter为ALL_MODEL_MODEL)来做区分
+            概念级别上对应的是Revit中的Category
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.CustomRevitType.Name">
+            <summary>
+            Gets or sets 自定义类型名称.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.CustomRevitType.ParameterMap">
+            <summary>
+            Gets or sets 自定义类型的参数字典映射.
+            </summary>
+            <value></value>
+            <remarks>
+            此处映射的参数注意应该是基于revit中Category级别的,要具有一般性.
+            </remarks>
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Services.ICustomTypeRepository">
+            <summary>
+            管理自定义类型<see cref="T:Hstar.RevitAddIn.Sluice.Services.CustomRevitType" />.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.ICustomTypeRepository.GetByName(Hstar.RevitAddIn.Sluice.Services.BuiltInCType)">
+            <summary>
+            通过<see cref="T:Hstar.RevitAddIn.Sluice.Services.BuiltInCType" />查询<see cref="T:Hstar.RevitAddIn.Sluice.Services.CustomRevitType" />.
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.ICustomTypeRepository.GetParameterMap(Hstar.RevitAddIn.Sluice.Services.CustomRevitType)">
+            <summary>
+            查询给定的<see cref="T:Hstar.RevitAddIn.Sluice.Services.CustomRevitType" />的参数字典映射.
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.ICustomTypeRepository.ReLoad">
+            <summary>
+            重新读取<see cref="T:Hstar.RevitAddIn.Sluice.Services.CustomRevitType" />.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.ICustomTypeRepository.Save2File(System.String)">
+            <summary>
+            保存至本地文件.
+            </summary>
+            <param name="filename"></param>
+            <remarks></remarks>
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Services.BaseJsonService">
+            <summary>
+            基础的Json服务.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.BaseJsonService.ConnStr">
+            <inheritdoc />
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.BaseJsonService.GetStream">
+            <inheritdoc />
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.BaseJsonService.GetModel``1(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.BaseJsonService.IsValidModel``1(Newtonsoft.Json.Linq.JToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.BaseJsonService.GetErrMsg">
+            <inheritdoc />
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.BaseJsonService.Write``1(``0,System.String,Newtonsoft.Json.Formatting)">
+            <inheritdoc />
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Services.IJsonReader">
+            <summary>
+            读取json文件.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.IJsonReader.ConnStr">
+            <summary>
+            json文件地址.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.IJsonReader.GetStream">
+            <summary>
+            获取json文件流.
+            </summary>
+            <returns></returns>
+            <remarks>
+            </remarks>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.IJsonReader.GetModel``1(System.String)">
+            <summary>
+            读取json文件为.net模型.
+            </summary>
+            <param name="filename"></param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Services.IJsonValidator">
+            <summary>
+            验证json文件.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.IJsonValidator.IsValidModel``1(Newtonsoft.Json.Linq.JToken)">
+            <summary>
+            指示json文件是否符合要求.
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.IJsonValidator.GetErrMsg">
+            <summary>
+            获取错误信息.
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Services.IJsonWriter">
+            <summary>
+            写入json文件.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.IJsonWriter.Write``1(``0,System.String,Newtonsoft.Json.Formatting)">
+            <summary>
+            写入json文件.
+            </summary>
+            <param name="t"></param>
+            <param name="filename"></param>
+            <param name="formatting"></param>
+            <remarks></remarks>
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Services.FooRevitModel">
+            <summary>
+            由于该项目禁止引用revit api,所以需要模拟revit对象创建所需的模型.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.FooRevitModel.SymbolName">
+            <summary>
+            Gets or sets 族类型名称.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.FooRevitModel.BuiltInParam">
+            <summary>
+            Gets or sets 某个内建参数的枚举名称.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Services.IFooService">
+            <summary>
+            Foo service.
+            </summary>
+            <remarks>
+            Service的签名禁止引用任何revit api!
+            </remarks>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.IFooService.Place(Hstar.RevitAddIn.Sluice.Services.FooRevitModel)">
+            <summary>
+            放置某个模型
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.IFooService.Adjust(Hstar.RevitAddIn.Sluice.Services.FooRevitModel)">
+            <summary>
+            调整某个模型
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+    </members>
+</doc>

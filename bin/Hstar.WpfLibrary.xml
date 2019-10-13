@@ -1,0 +1,1505 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Hstar.WpfLibrary</name>
+    </assembly>
+    <members>
+        <member name="T:Hstar.WpfLibrary.AttachedProperties.BaseAttachedProperty`2">
+            <summary>
+            A base attached property to replace the vanilla WPF attached property
+            </summary>
+            <typeparam name="TParent">The parent class to be the attached property</typeparam>
+            <typeparam name="TProperty">The type of this attached property</typeparam>
+        </member>
+        <member name="P:Hstar.WpfLibrary.AttachedProperties.BaseAttachedProperty`2.Instance">
+            <summary>
+            A singleton instance of our parent class
+            </summary>
+        </member>
+        <member name="E:Hstar.WpfLibrary.AttachedProperties.BaseAttachedProperty`2.ValueChanged">
+            <summary>
+            Fired when the value changes
+            </summary>
+        </member>
+        <member name="E:Hstar.WpfLibrary.AttachedProperties.BaseAttachedProperty`2.ValueUpdated">
+            <summary>
+            Fired when the value changes, even when the value is the same
+            </summary>
+        </member>
+        <member name="F:Hstar.WpfLibrary.AttachedProperties.BaseAttachedProperty`2.ValueProperty">
+            <summary>
+            The attached property for this class
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.AttachedProperties.BaseAttachedProperty`2.OnValuePropertyChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>
+            The callback event when the <see cref="F:Hstar.WpfLibrary.AttachedProperties.BaseAttachedProperty`2.ValueProperty" /> is changed
+            </summary>
+            <param name="d">The UI element that had it's property changed</param>
+            <param name="e">The arguments for the event</param>
+        </member>
+        <member name="M:Hstar.WpfLibrary.AttachedProperties.BaseAttachedProperty`2.OnValuePropertyUpdated(System.Windows.DependencyObject,System.Object)">
+            <summary>
+            The callback event when the <see cref="F:Hstar.WpfLibrary.AttachedProperties.BaseAttachedProperty`2.ValueProperty" /> is changed, even if it is the same value
+            </summary>
+            <param name="d">The UI element that had it's property changed</param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Hstar.WpfLibrary.AttachedProperties.BaseAttachedProperty`2.GetValue(System.Windows.DependencyObject)">
+            <summary>
+            Gets the attached property
+            </summary>
+            <param name="d">The element to get the property from</param>
+            <returns></returns>
+        </member>
+        <member name="M:Hstar.WpfLibrary.AttachedProperties.BaseAttachedProperty`2.SetValue(System.Windows.DependencyObject,`1)">
+            <summary>
+            Sets the attached property
+            </summary>
+            <param name="d">The element to get the property from</param>
+            <param name="value">The value to set the property to</param>
+        </member>
+        <member name="M:Hstar.WpfLibrary.AttachedProperties.BaseAttachedProperty`2.OnValueChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>
+            The method that is called when any attached property of this type is changed
+            </summary>
+            <param name="sender">The UI element that this property was changed for</param>
+            <param name="e">The arguments for this event</param>
+        </member>
+        <member name="M:Hstar.WpfLibrary.AttachedProperties.BaseAttachedProperty`2.OnValueUpdated(System.Windows.DependencyObject,System.Object)">
+            <summary>
+            The method that is called when any attached property of this type is changed, even if the value is the same
+            </summary>
+            <param name="sender">The UI element that this property was changed for</param>
+            <param name="value"></param>
+        </member>
+        <member name="T:Hstar.WpfLibrary.AttachedProperties.IsBusyProperty">
+            <summary>
+            The IsBusy attached property for a anything that wants to flag if the control is busy
+            </summary>
+        </member>
+        <member name="T:Hstar.WpfLibrary.AttachedProperties.HasLoadedWaterMark">
+            <summary>
+            indicates whether an <seealso cref="T:System.Windows.Controls.Image" /> has a loaded water mark
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.AttachedProperties.HasLoadedWaterMark.OnValueChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <inheritdoc />
+        </member>
+        <member name="T:Hstar.WpfLibrary.AttachedProperties.MonitorPasswordProperty">
+            <summary>
+            The MonitorPassword attached property for a <see cref="T:System.Windows.Controls.PasswordBox" />
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.AttachedProperties.MonitorPasswordProperty.OnValueChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <inheritdoc />
+        </member>
+        <member name="M:Hstar.WpfLibrary.AttachedProperties.MonitorPasswordProperty.PasswordBox_PasswordChanged(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Fired when the password box password value changes
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="T:Hstar.WpfLibrary.AttachedProperties.HasTextProperty">
+            <summary>
+            The HasText attached property for a <see cref="T:System.Windows.Controls.PasswordBox" />
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.AttachedProperties.HasTextProperty.SetValue(System.Windows.DependencyObject)">
+            <summary>
+            Sets the HasText property based on if the caller <see cref="T:System.Windows.Controls.PasswordBox" /> has any text
+            </summary>
+            <param name="sender"></param>
+        </member>
+        <member name="T:Hstar.WpfLibrary.Converters.BaseValueConverter`1">
+            <summary>
+            A base value converter that allows direct XAML usage
+            </summary>
+            <typeparam name="T">The type of this value converter</typeparam>
+        </member>
+        <member name="F:Hstar.WpfLibrary.Converters.BaseValueConverter`1._converter">
+            <summary>
+            A single static instance of this value converter
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Converters.BaseValueConverter`1.ProvideValue(System.IServiceProvider)">
+            <summary>
+            Provides a static instance of the value converter
+            </summary>
+            <param name="serviceProvider">The service provider</param>
+            <returns></returns>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Converters.BaseValueConverter`1.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            The method to convert one type to another
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Converters.BaseValueConverter`1.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            The method to convert a value back to it's source type
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Hstar.WpfLibrary.Converters.Boolean2VisibilityConverter">
+            <summary>
+            A converter that takes in a boolean and returns a <see cref="T:System.Windows.Visibility" />
+            </summary>
+            <remarks>
+            默认参数为Visible|Hidden,即若值为true则返回visible,false则返回hidden;
+            A|B,true返回A,false返回B,解析失败任意一个则按照默认参数
+            </remarks>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Converters.Boolean2VisibilityConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc />
+        </member>
+        <member name="M:Hstar.WpfLibrary.Converters.Boolean2VisibilityConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc />
+        </member>
+        <member name="T:Hstar.WpfLibrary.Converters.Enum2BooleanConverter">
+            <summary>
+            convert enum to bool
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Converters.Enum2BooleanConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc />
+        </member>
+        <member name="M:Hstar.WpfLibrary.Converters.Enum2BooleanConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc />
+        </member>
+        <member name="T:Hstar.WpfLibrary.Converters.FilePathToImageSourceConverter">
+            <summary>
+            将文件路径转换为图片.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Converters.FilePathToImageSourceConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc />
+        </member>
+        <member name="M:Hstar.WpfLibrary.Converters.FilePathToImageSourceConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc />
+        </member>
+        <member name="T:Hstar.WpfLibrary.Converters.FilePath2NameConverter">
+            <summary>
+            convert full path to name;
+            默认返回不换行的不带ext的名称;
+            参数为True|3,则返回带ext,3字换行的名称.
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Converters.FilePath2NameConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc />
+        </member>
+        <member name="M:Hstar.WpfLibrary.Converters.FilePath2NameConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc />
+        </member>
+        <member name="T:Hstar.WpfLibrary.Converters.Inch2CentimeterConverter">
+            <summary>
+            Convert inch to centimeter, 1 in = 2.54cm.
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Converters.Inch2CentimeterConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc />
+        </member>
+        <member name="M:Hstar.WpfLibrary.Converters.Inch2CentimeterConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc />
+        </member>
+        <member name="T:Hstar.WpfLibrary.CustomControls.ComponentLibraryPanel">
+            <summary>
+            构件库展示视图面板,展示<see cref="P:Hstar.WpfLibrary.CustomControls.ComponentLibraryPanel.Path" />下的所有files和其缩略图,提供一个只读的<see cref="P:Hstar.WpfLibrary.CustomControls.ComponentLibraryPanel.FileSource" />
+            供用户读取当前展示的集合
+            </summary>
+            <summary>
+            ComponentLibraryPanel
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.CustomControls.ComponentLibraryPanel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Hstar.WpfLibrary.CustomControls.ComponentLibraryPanel" /> class.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.WpfLibrary.CustomControls.ComponentLibraryPanel.SearchComponentPanel(System.String,System.String)">
+            <summary>
+            检索rootPath下的构件并刷新WrapPanel中的显示
+            </summary>
+            <param name="searchText"></param>
+            <param name="rootPath"></param>
+            <remarks>默认情况下rootPath为"",此时检索当前WrapPanel下的构件</remarks>
+        </member>
+        <member name="F:Hstar.WpfLibrary.CustomControls.ComponentLibraryPanel.PathProperty">
+            <summary>
+            WrapPanel根据此刷新应该显示的files
+            </summary>
+        </member>
+        <member name="F:Hstar.WpfLibrary.CustomControls.ComponentLibraryPanel.FileSourceProperty">
+            <summary>
+            WrapPanel的ItemsSource
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.CustomControls.ComponentLibraryPanel.FileSource">
+            <summary>
+            Clr wrapper of <seealso cref="F:Hstar.WpfLibrary.CustomControls.ComponentLibraryPanel.FileSourceProperty" />
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.CustomControls.ComponentLibraryPanel.Path">
+            <summary>
+            Clr wrapper of <seealso cref="F:Hstar.WpfLibrary.CustomControls.ComponentLibraryPanel.PathProperty" />
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.CustomControls.ComponentLibraryPanel.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Hstar.WpfLibrary.CustomControls.ComponentLibraryTreeView">
+            <summary>
+            构件库树状图,只解析两层:工程类别和构件类别,通过设置<see cref="P:Hstar.WpfLibrary.CustomControls.ComponentLibraryTreeView.ProjectCategory" />来设置工程类别所在的根目录,
+            开放一个<see cref="P:Hstar.WpfLibrary.CustomControls.ComponentLibraryTreeView.SelectedItem" />属性供用户获得当前选择的对象<see cref="T:Hstar.WpfLibrary.ViewModels.DirInfo" />
+            </summary>
+            <summary>
+            ComponentLibraryTreeView
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.CustomControls.ComponentLibraryTreeView.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Hstar.WpfLibrary.CustomControls.ComponentLibraryTreeView" /> class.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Hstar.WpfLibrary.CustomControls.ComponentLibraryTreeView.ProjectCategoryProperty">
+            <summary>
+            indicates the category of project which is the root path to search, default
+            value is string.Empty
+            </summary>
+        </member>
+        <member name="F:Hstar.WpfLibrary.CustomControls.ComponentLibraryTreeView.SelectedItemProperty">
+            <summary>
+            Tree view's selected <seealso cref="T:Hstar.WpfLibrary.ViewModels.DirInfo" />
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.CustomControls.ComponentLibraryTreeView.SelectedItem">
+            <summary>
+            Clr wrapper of <seealso cref="F:Hstar.WpfLibrary.CustomControls.ComponentLibraryTreeView.SelectedItemProperty" />
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.CustomControls.ComponentLibraryTreeView.ProjectCategory">
+            <summary>
+            clr wrapper of <seealso cref="F:Hstar.WpfLibrary.CustomControls.ComponentLibraryTreeView.ProjectCategoryProperty" />
+            </summary>
+        </member>
+        <member name="F:Hstar.WpfLibrary.CustomControls.ComponentLibraryTreeView.SelectedItemChangedEvent">
+            <summary>
+            Routed event of selected item changed
+            </summary>
+        </member>
+        <member name="E:Hstar.WpfLibrary.CustomControls.ComponentLibraryTreeView.SelectedItemChanged">
+            <summary>
+            Clr wrapper of <seealso cref="F:Hstar.WpfLibrary.CustomControls.ComponentLibraryTreeView.SelectedItemChangedEvent" />
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.CustomControls.ComponentLibraryTreeView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Hstar.WpfLibrary.CustomControls.RfaLoadedWaterMarkAdorner">
+            <summary>
+            rfa文件已加载的水印
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.CustomControls.RfaLoadedWaterMarkAdorner.#ctor(System.Windows.UIElement)">
+            <inheritdoc />
+        </member>
+        <member name="M:Hstar.WpfLibrary.CustomControls.RfaLoadedWaterMarkAdorner.OnRender(System.Windows.Media.DrawingContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Hstar.WpfLibrary.CustomControls.DrawingCanvas">
+            <summary>
+            A custom canvas to draw square based on <see cref="T:Hstar.WpfLibrary.ViewModels.TemplateArrangeData" />.
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.CustomControls.DrawingCanvas.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Hstar.WpfLibrary.CustomControls.DrawingCanvas" /> class.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.WpfLibrary.CustomControls.DrawingCanvas.OnSelectedIndexChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>
+            called when current selected visual changed
+            </summary>
+        </member>
+        <member name="E:Hstar.WpfLibrary.CustomControls.DrawingCanvas.SelectedIndexChanged">
+            <summary>
+            Listen to selected index changed.
+            </summary>
+            <remarks>
+            第一个泛型参数为旧值,第二个为新值.
+            </remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.CustomControls.DrawingCanvas.VisualChildrenCount">
+            <summary>
+            Gets the number of child <see cref="T:System.Windows.Media.Visual" /> objects in
+            this instance of <see cref="T:System.Windows.Controls.Panel" />.
+            </summary>
+            <returns>
+            The number of child <see cref="T:System.Windows.Media.Visual" /> objects.
+            </returns>
+        </member>
+        <member name="M:Hstar.WpfLibrary.CustomControls.DrawingCanvas.GetVisualChild(System.Int32)">
+            <summary>
+            Gets a <see cref="T:System.Windows.Media.Visual" /> child of this <see cref="T:System.Windows.Controls.Panel" /> at the
+            specified index position.
+            </summary>
+            <param name="index">The index position of the <see cref="T:System.Windows.Media.Visual" /> child.</param>
+            <returns>
+            A <see cref="T:System.Windows.Media.Visual" /> child of the parent <see cref="T:System.Windows.Controls.Panel" /> element.
+            </returns>
+        </member>
+        <member name="F:Hstar.WpfLibrary.CustomControls.DrawingCanvas._visuals">
+            <summary>
+            store all the drawings in the canvas
+            </summary>
+        </member>
+        <member name="F:Hstar.WpfLibrary.CustomControls.DrawingCanvas._origin">
+            <summary>
+            所有<see cref="T:System.Windows.Media.DrawingVisual" />在Canvas上的放置原点,它应是指第一个visual的左上顶点的位置; default is (50,200)
+            </summary>
+        </member>
+        <member name="F:Hstar.WpfLibrary.CustomControls.DrawingCanvas._lastPoint">
+            <summary>
+            上一个<see cref="T:System.Windows.Media.DrawingVisual" />的左上顶点,初始值等于<see cref="F:Hstar.WpfLibrary.CustomControls.DrawingCanvas._origin" />
+            </summary>
+        </member>
+        <member name="F:Hstar.WpfLibrary.CustomControls.DrawingCanvas._pointClicked">
+            <summary>
+            user clicked point on canvas
+            </summary>
+        </member>
+        <member name="F:Hstar.WpfLibrary.CustomControls.DrawingCanvas._transformGroup">
+            <summary>
+            store transforms of the canvas
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.CustomControls.DrawingCanvas.SelectedIndex">
+            <summary>
+            current selected drawing visual index
+            </summary>
+        </member>
+        <member name="F:Hstar.WpfLibrary.CustomControls.DrawingCanvas.SelectedIndexProperty">
+            <summary>
+            dependency property of <see cref="P:Hstar.WpfLibrary.CustomControls.DrawingCanvas.SelectedIndex" />
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.CustomControls.DrawingCanvas.ZoomSpeed">
+            <summary>
+            zoom speed, default is 1.3, the higher, zoom faster; [0.1,+infinity)
+            </summary>
+        </member>
+        <member name="F:Hstar.WpfLibrary.CustomControls.DrawingCanvas.ZoomSpeedProperty">
+            <summary>
+            dependency property of <see cref="P:Hstar.WpfLibrary.CustomControls.DrawingCanvas.ZoomSpeed" />
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.CustomControls.DrawingCanvas.BuildingData">
+            <summary>
+            information of drawing visuals
+            </summary>
+        </member>
+        <member name="F:Hstar.WpfLibrary.CustomControls.DrawingCanvas.BuildingDataProperty">
+            <summary>
+            dependency property of <see cref="P:Hstar.WpfLibrary.CustomControls.DrawingCanvas.BuildingData" />
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.CustomControls.DrawingCanvas.OnBuildingDataPropertyChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>
+            called when <see cref="P:Hstar.WpfLibrary.CustomControls.DrawingCanvas.BuildingData" /> 's is reassigned
+            </summary>
+            <param name="d">this <see cref="T:Hstar.WpfLibrary.CustomControls.DrawingCanvas" /></param>
+            <param name="e">event args</param>
+        </member>
+        <member name="M:Hstar.WpfLibrary.CustomControls.DrawingCanvas.Init">
+            <summary>
+            init the <see cref="T:Hstar.WpfLibrary.CustomControls.DrawingCanvas" />
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.CustomControls.DrawingCanvas.SuppressInnerTransform(System.Windows.Media.TransformGroup)">
+            <summary>
+            压缩变换矩阵.
+            </summary>
+            <param name="tg"></param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.WpfLibrary.CustomControls.DrawingCanvas.BuildingDataOnCollectionChanged(System.Object,System.Collections.Specialized.NotifyCollectionChangedEventArgs)">
+            <summary>
+            called when data collection changed
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.CustomControls.DrawingCanvas.DrawSquare(System.Windows.Media.DrawingVisual,System.Windows.Point,System.Windows.Size,System.Windows.Media.Brush)">
+            <summary>
+            根据左上角点和长宽画一个矩形
+            </summary>
+            <param name="visual">a <see cref="T:System.Windows.Media.DrawingVisual" /></param>
+            <param name="topLeftPoint">top left point to draw rectangle</param>
+            <param name="size">size of rectangle</param>
+            <param name="fill">fill the rectangle, default is <see cref="P:System.Windows.Media.Brushes.SteelBlue" /></param>
+        </member>
+        <member name="M:Hstar.WpfLibrary.CustomControls.DrawingCanvas.DrawSquareFromCollection(System.Collections.Generic.List{Hstar.WpfLibrary.ViewModels.TemplateArrangeData}@)">
+            <summary>
+            draw square from collection sequentially and update the collection's location property
+            </summary>
+            <param name="collection">collection to be drawn</param>
+        </member>
+        <member name="M:Hstar.WpfLibrary.CustomControls.DrawingCanvas.InnerGetVisual(System.Windows.Point)">
+            <summary>
+            get the drawing visual right under user's click
+            </summary>
+            <param name="pt">the click position</param>
+            <returns></returns>
+        </member>
+        <member name="M:Hstar.WpfLibrary.CustomControls.DrawingCanvas.ClearCanvas">
+            <summary>
+            Delete all the visuals from canvas.
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.CustomControls.DrawingCanvas.DeleteVisual(System.Windows.Media.Visual[])">
+            <summary>
+            Delete certain visuals from canvas.
+            </summary>
+            <param name="visuals">
+            user selected visuals, note these visuals should belong to
+            existing visuals
+            </param>
+        </member>
+        <member name="M:Hstar.WpfLibrary.CustomControls.DrawingCanvas.AddVisual(System.Windows.Media.Visual[])">
+            <summary>
+            Add certain visuals to canvas.
+            <remarks>
+            each visual will be add a default <see cref="T:System.Windows.Media.Effects.DropShadowEffect" />
+            with ShadowDepth is set to zero
+            </remarks>
+            </summary>
+            <param name="visuals">visuals to be added</param>
+        </member>
+        <member name="M:Hstar.WpfLibrary.CustomControls.DrawingCanvas.ReDraw">
+            <summary>
+            重画.
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.CustomControls.DrawingCanvas.CenterVisuals">
+            <summary>
+            将所有visuals缩放到视图正中.
+            </summary>
+        </member>
+        <member name="T:Hstar.WpfLibrary.DI">
+            <summary>
+            A shorthand access class to get DI services with nice clean short code
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.DI.ApplicationViewModel">
+            <summary>
+            Gets <see cref="P:Hstar.WpfLibrary.DI.ApplicationViewModel" />.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.DI.FileSystemService">
+            <summary>
+            Gets <see cref="T:Hstar.RevitAddIn.Sluice.Services.IFileSystem" /> service.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="T:Hstar.WpfLibrary.Helpers.ApplicationViewHelper">
+            <summary>
+            Helper method of <see cref="T:Hstar.WpfLibrary.ViewModels.ApplicationView" />.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Helpers.ApplicationViewHelper.ToBaseView(Hstar.WpfLibrary.ViewModels.ApplicationView,System.Object)">
+            <summary>
+            Convert <see cref="T:Hstar.WpfLibrary.ViewModels.ApplicationView" /> to <see cref="T:Hstar.WpfLibrary.Views.BaseView" />.
+            </summary>
+            <param name="view">Required. </param>
+            <param name="viewModel">Optional. The default value is null.</param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Helpers.ApplicationViewHelper.ToApplicationView(Hstar.WpfLibrary.Views.BaseView)">
+            <summary>
+            Convert <see cref="T:Hstar.WpfLibrary.Views.BaseView" /> to <see cref="T:Hstar.WpfLibrary.ViewModels.ApplicationView" />.
+            </summary>
+            <param name="view"></param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="T:Hstar.WpfLibrary.Helpers.RfaFilePreviewImageParser">
+            <summary>
+            parse *.rfa file's preview image
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Helpers.RfaFilePreviewImageParser.ParseRevitPreview4_0(System.String)">
+            <summary>
+            rfa等格式实际上是一个package,需通过StorageInfo来访问,但是要获得StorageInfo必须
+            通过反射调用StorageRoot的一个Open方法来获得之
+            </summary>
+            <param name="filename"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Helpers.RfaFilePreviewImageParser.GetPngStartingOffset(System.Byte[])">
+            <summary>
+            RevitPreview4.0的二进制流中需要跳过revit的一些metadata,来获得图片的起始位置
+            </summary>
+            <param name="rawData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Helpers.RfaFilePreviewImageParser.BitSourceToArray(System.Windows.Media.Imaging.BitmapSource)">
+            <summary>
+            convert <seealso cref="T:System.Windows.Media.Imaging.BitmapSource" /> to byte array
+            </summary>
+            <param name="bitmapSource"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Helpers.RfaFilePreviewImageParser.GetPreviewImagePngData(System.String)">
+            <summary>
+            获取rfa文件预览缩略图原始二进制
+            </summary>
+            <param name="filename"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Helpers.RfaFilePreviewImageParser.GetPreviewAsBitmapImage(System.String)">
+            <summary>
+            获取rfa文件预览缩略图的<seealso cref="T:System.Windows.Media.ImageSource" />
+            </summary>
+            <param name="filename"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Helpers.RfaFilePreviewImageParser.GetPreviewAsImage(System.String)">
+            <summary>
+            获取rfa文件预览缩略图的<seealso cref="T:System.Drawing.Image" />
+            </summary>
+            <param name="filename"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Hstar.WpfLibrary.Helpers.SharedResourceDictionary">
+            <summary>
+            The shared resource dictionary is a specialized resource dictionary
+            that loads it content only once. If a second instance with the same source
+            is created, it only merges the resources from the cache.
+            </summary>
+        </member>
+        <member name="F:Hstar.WpfLibrary.Helpers.SharedResourceDictionary._sharedDictionaries">
+            <summary>
+            Internal cache of loaded dictionaries
+            </summary>
+        </member>
+        <member name="F:Hstar.WpfLibrary.Helpers.SharedResourceDictionary._sourceUri">
+            <summary>
+            Local member of the source uri
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.Helpers.SharedResourceDictionary.Source">
+            <summary>
+            Gets or sets the uniform resource identifier (URI) to load resources from.
+            </summary>
+        </member>
+        <member name="T:Hstar.WpfLibrary.ICommands.RelayCommand">
+            <summary>
+            relay command
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.ICommands.RelayCommand.RaiseCanExecuteChanged">
+            <summary>
+            manually invoke the <seealso cref="E:Hstar.WpfLibrary.ICommands.RelayCommand.CanExecuteChanged" />
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.ICommands.RelayCommand.#ctor(System.Predicate{System.Object},System.Action{System.Object})">
+            <summary>
+            ctor with canExecute and execute
+            </summary>
+            <param name="canExecute"></param>
+            <param name="execute"></param>
+        </member>
+        <member name="M:Hstar.WpfLibrary.ICommands.RelayCommand.#ctor(System.Action{System.Object})">
+            <summary>
+            ctor with execute
+            </summary>
+            <param name="execute"></param>
+        </member>
+        <member name="E:Hstar.WpfLibrary.ICommands.RelayCommand.CanExecuteChanged">
+            <inheritdoc />
+        </member>
+        <member name="M:Hstar.WpfLibrary.ICommands.RelayCommand.CanExecute(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Hstar.WpfLibrary.ICommands.RelayCommand.Execute(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="T:Hstar.WpfLibrary.ICommands.RelayCommand`1">
+            <summary>
+            generic version of relay command
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.ICommands.RelayCommand`1.RaiseCanExecuteChanged">
+            <summary>
+            manually invoke the <seealso cref="E:Hstar.WpfLibrary.ICommands.RelayCommand`1.CanExecuteChanged" />
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.ICommands.RelayCommand`1.#ctor(System.Predicate{`0},System.Action{`0})">
+            <summary>
+            ctor with canExecute and execute
+            </summary>
+            <param name="canExecute"></param>
+            <param name="execute"></param>
+        </member>
+        <member name="M:Hstar.WpfLibrary.ICommands.RelayCommand`1.#ctor(System.Action{`0})">
+            <summary>
+            ctor with execute
+            </summary>
+            <param name="execute"></param>
+        </member>
+        <member name="E:Hstar.WpfLibrary.ICommands.RelayCommand`1.CanExecuteChanged">
+            <inheritdoc />
+        </member>
+        <member name="M:Hstar.WpfLibrary.ICommands.RelayCommand`1.CanExecute(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Hstar.WpfLibrary.ICommands.RelayCommand`1.Execute(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="T:Hstar.WpfLibrary.Validations.FileNameValidation">
+            <summary>
+            验证是否合法的文件名.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Validations.FileNameValidation.Validate(System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc />
+        </member>
+        <member name="T:Hstar.WpfLibrary.Validations.SizeValidationRule">
+            <summary>
+            Validate <see cref="T:System.Windows.Size" />, shall not be negative.
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Validations.SizeValidationRule.Validate(System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc />
+        </member>
+        <member name="T:Hstar.WpfLibrary.ViewModels.ApplicationView">
+            <summary>
+            代表视图类型的枚举.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Hstar.WpfLibrary.ViewModels.ApplicationView.FooTest">
+            <summary>
+            Foo Test.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Hstar.WpfLibrary.ViewModels.ApplicationView.ComponentLibrary">
+            <summary>
+            构件库视图.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Hstar.WpfLibrary.ViewModels.ApplicationView.TemplateArrange">
+            <summary>
+            模板快速布置.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="T:Hstar.WpfLibrary.ViewModels.ApplicationViewModel">
+            <summary>
+            Globally controls all the viewModel.
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.ViewModels.ApplicationViewModel.GoToView(Hstar.WpfLibrary.ViewModels.ApplicationView,Hstar.WpfLibrary.ViewModels.BaseViewModel)">
+            <summary>
+            Navigates to the specified view.
+            </summary>
+            <param name="view">The view to go to.</param>
+            <param name="viewModel">The view model, if any, to set explicitly to the new page</param>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.ApplicationViewModel.CurrentView">
+            <summary>
+            Gets or sets current view in the <see cref="T:Hstar.WpfLibrary.Views.ViewHost" />.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.ApplicationViewModel.CurrentViewModel">
+            <summary>
+            The view model to use for the current page when the CurrentPage changes
+            NOTE: This is not a live up-to-date view model of the current page
+            it is simply used to set the view model of the current page
+            at the time it changes.
+            </summary>
+        </member>
+        <member name="T:Hstar.WpfLibrary.ViewModels.BaseWindowVm">
+            <summary>
+            <see cref="T:Hstar.WpfLibrary.Views.BaseWindow" />的视图模型.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.BaseWindowVm.Title">
+            <summary>
+            Gets or sets <see cref="T:Hstar.WpfLibrary.Views.BaseWindow" />'s title.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.BaseWindowVm.Height">
+            <summary>
+            Gets or sets <see cref="T:Hstar.WpfLibrary.Views.BaseWindow" />'s height.
+            </summary>
+            <value>600 by default</value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.BaseWindowVm.Width">
+            <summary>
+            Gets or sets <see cref="T:Hstar.WpfLibrary.Views.BaseWindow" />'s width.
+            </summary>
+            <value>800 by default</value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.BaseWindowVm.MinHeight">
+            <summary>
+            Gets or sets <see cref="T:Hstar.WpfLibrary.Views.BaseWindow" />'s min height.
+            </summary>
+            <value>600 by default</value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.BaseWindowVm.MinWidth">
+            <summary>
+            Gets or sets <see cref="T:Hstar.WpfLibrary.Views.BaseWindow" />'s min width.
+            </summary>
+            <value>800 by default</value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.BaseWindowVm.MaxHeight">
+            <summary>
+            Gets or sets <see cref="T:Hstar.WpfLibrary.Views.BaseWindow" />'s max height.
+            </summary>
+            <value>positiveInfinity by default</value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.BaseWindowVm.MaxWidth">
+            <summary>
+            Gets or sets <see cref="T:Hstar.WpfLibrary.Views.BaseWindow" />'s max width.
+            </summary>
+            <value>positiveInfinity by default</value>
+            <remarks></remarks>
+        </member>
+        <member name="T:Hstar.WpfLibrary.ViewModels.ViewModelLocator">
+            <summary>
+            Locates view models from the IoC for use in binding in Xaml files.
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.ViewModelLocator.Instance">
+            <summary>
+            Singleton instance of the locator
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.ViewModelLocator.ApplicationViewModel">
+            <summary>
+            The application view model.
+            </summary>
+        </member>
+        <member name="T:Hstar.WpfLibrary.ViewModels.BaseViewModel">
+            <summary>
+            basic class of all view models
+            </summary>
+        </member>
+        <member name="F:Hstar.WpfLibrary.ViewModels.BaseViewModel.Lock">
+            <summary>
+            used for ensure thread safety
+            </summary>
+        </member>
+        <member name="E:Hstar.WpfLibrary.ViewModels.BaseViewModel.PropertyChanged">
+            <inheritdoc />
+        </member>
+        <member name="M:Hstar.WpfLibrary.ViewModels.BaseViewModel.OnPropertyChanged(System.String)">
+            <summary>
+            invoke the <seealso cref="E:Hstar.WpfLibrary.ViewModels.BaseViewModel.PropertyChanged" />
+            </summary>
+            <param name="propertyName"></param>
+        </member>
+        <member name="T:Hstar.WpfLibrary.ViewModels.ComLibTreeViewModel">
+            <summary>
+            view model of <seealso cref="T:Hstar.WpfLibrary.CustomControls.ComponentLibraryTreeView" />
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.ComLibTreeViewModel.ProjectPath">
+            <summary>
+            工程类别路径
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.ComLibTreeViewModel.TreeViewPath">
+            <summary>
+            Tree view路径
+            </summary>
+        </member>
+        <member name="T:Hstar.WpfLibrary.ViewModels.ComponentLibraryVm">
+            <summary>
+            构件图视图模型
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.WpfLibrary.ViewModels.ComponentLibraryVm.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Hstar.WpfLibrary.ViewModels.ComponentLibraryVm" /> class.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.ComponentLibraryVm.ProjectCategories">
+            <summary>
+            Gets or sets 工程类别下拉框列表.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.ComponentLibraryVm.SearchCommand">
+            <summary>
+            Gets or sets <see cref="T:Hstar.WpfLibrary.Views.ComponentLibraryView" />'s search command.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="T:Hstar.WpfLibrary.ViewModels.DirInfo">
+            <summary>
+            Information of directory.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.DirInfo.Path">
+            <summary>
+            current path
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.DirInfo.IsDirectory">
+            <summary>
+            whether it is a directory
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.DirInfo.IsFile">
+            <summary>
+            whether it is a file
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.DirInfo.Children">
+            <summary>
+            sub <seealso cref="T:Hstar.WpfLibrary.ViewModels.DirInfo" />
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.ViewModels.DirInfo.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:Hstar.WpfLibrary.ViewModels.RfaFileVm">
+            <summary>
+            <see cref="T:Hstar.WpfLibrary.CustomControls.ComponentLibraryPanel" />显示构件视图的视图来源模型
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.WpfLibrary.ViewModels.RfaFileVm.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Hstar.WpfLibrary.ViewModels.RfaFileVm" /> class.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RfaFileVm.Path">
+            <summary>
+            路径
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RfaFileVm.Name">
+            <summary>
+            族名称
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RfaFileVm.IsLoaded">
+            <summary>
+            族是否在该文档加载
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RfaFileVm.LoadCommand">
+            <summary>
+            加载族
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RfaFileVm.PlaceCommand">
+            <summary>
+            放置族实例
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RfaFileVm.CheckLoadCommand">
+            <summary>
+            检查刷新<seealso cref="P:Hstar.WpfLibrary.ViewModels.RfaFileVm.IsLoaded" />
+            </summary>
+            <remarks>
+            每次切换视图时都会调用此命令,要注意代码执行效率
+            </remarks>
+        </member>
+        <member name="T:Hstar.WpfLibrary.ViewModels.TemplateArrangeData">
+            <summary>
+            Data of <see cref="T:Hstar.WpfLibrary.ViewModels.TemplateArrangeVm" />, used for robust design of building.
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.ViewModels.TemplateArrangeData.ToString">
+            <inheritdoc />
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.TemplateArrangeData.Name">
+            <summary>
+            对应的<see cref="T:Hstar.RevitAddIn.Sluice.Services.CustomRevitType" />.
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.TemplateArrangeData.Location">
+            <summary>
+            类型对应的放置点.对于底板,放置点为中心;对于其他构件,应统一在某一侧的中点.
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.TemplateArrangeData.Size">
+            <summary>
+            每一个放置点对应的尺寸,l(顺河向长) x b(横河向宽),一般情况l &lt; b, 单位:cm. Default is 500 * 2000.
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.TemplateArrangeData.HasParting">
+            <summary>
+            指示是否有分缝.
+            </summary>
+            <remarks>分缝是指当前所选择的构件按照从上游至下游的顺序的下一个构件与其是否有空隙分缝.</remarks>
+        </member>
+        <member name="T:Hstar.WpfLibrary.ViewModels.TemplateArrangeVm">
+            <summary>
+            快速模板布置模型.
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.ViewModels.TemplateArrangeVm.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Hstar.WpfLibrary.ViewModels.TemplateArrangeVm" /> class.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Hstar.WpfLibrary.ViewModels.TemplateArrangeVm._cacheShouldSave">
+            <summary>
+            记录某个file是否已被用户确定需要覆盖保存.
+            </summary>
+        </member>
+        <member name="F:Hstar.WpfLibrary.ViewModels.TemplateArrangeVm._cacheData">
+            <summary>
+            存储缓存的数据,每当调用保存和导入命令时将刷新该缓存.
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.TemplateArrangeVm.Data">
+            <summary>
+            Basic data to drawing visuals.
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.TemplateArrangeVm.ValidTaDataName">
+            <summary>
+            合法的备选<see cref="T:Hstar.WpfLibrary.ViewModels.TemplateArrangeData" />的类型.
+            </summary>
+            <value></value>
+            <remarks>
+            所谓合法的即只包括上下游建筑物,闸底板.
+            </remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.TemplateArrangeVm.Name">
+            <summary>
+            Gets or sets 模板名称.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.TemplateArrangeVm.SaveCommand">
+            <summary>
+            保存<see cref="P:Hstar.WpfLibrary.ViewModels.TemplateArrangeVm.Data" />到Data文件夹.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.TemplateArrangeVm.ImportCommand">
+            <summary>
+            导入文本读取<see cref="P:Hstar.WpfLibrary.ViewModels.TemplateArrangeVm.Data" />.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.TemplateArrangeVm.ResetVisualsCommand">
+            <summary>
+            重置显示视图.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.TemplateArrangeVm.CenterVisualsCommand">
+            <summary>
+            居中显示视图.
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.TemplateArrangeVm.MoveUpCommand">
+            <summary>
+            当前的<see cref="T:Hstar.WpfLibrary.ViewModels.TemplateArrangeData" />下移一格.
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.TemplateArrangeVm.MoveDownCommand">
+            <summary>
+            当前的<see cref="T:Hstar.WpfLibrary.ViewModels.TemplateArrangeData" />上移一格.
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.TemplateArrangeVm.DeleteCommand">
+            <summary>
+            删除当前的<see cref="T:Hstar.WpfLibrary.ViewModels.TemplateArrangeData" />.
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.TemplateArrangeVm.AddCommand">
+            <summary>
+            添加一个<see cref="T:Hstar.WpfLibrary.ViewModels.TemplateArrangeData" />.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.TemplateArrangeVm.EditCommand">
+            <summary>
+            编辑当前的<see cref="T:Hstar.WpfLibrary.ViewModels.TemplateArrangeData" />.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="E:Hstar.WpfLibrary.ViewModels.TemplateArrangeVm.Saved">
+            <summary>
+            Occurs when data is saved.
+            </summary>
+        </member>
+        <member name="E:Hstar.WpfLibrary.ViewModels.TemplateArrangeVm.Imported">
+            <summary>
+            Occurs when data is imported.
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.ViewModels.TemplateArrangeVm.OnSaved(Hstar.WpfLibrary.ViewModels.TemplateArrangeVm)">
+            <summary>
+            Invokes the <see cref="E:Hstar.WpfLibrary.ViewModels.TemplateArrangeVm.Saved" />.
+            </summary>
+            <param name="obj"></param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.WpfLibrary.ViewModels.TemplateArrangeVm.OnImported(Hstar.WpfLibrary.ViewModels.TemplateArrangeVm)">
+            <summary>
+            Invokes the <see cref="E:Hstar.WpfLibrary.ViewModels.TemplateArrangeVm.Imported" />.
+            </summary>
+            <param name="obj"></param>
+            <remarks></remarks>
+        </member>
+        <member name="T:Hstar.WpfLibrary.ViewModels.FooTestVm">
+            <summary>
+            Foo Test View Model.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.WpfLibrary.ViewModels.FooTestVm.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Hstar.WpfLibrary.ViewModels.FooTestVm" /> class.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.FooTestVm.Name">
+            <summary>
+            Gets or sets foo test name.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.FooTestVm.Info">
+            <summary>
+            Gets or sets foo information.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.FooTestVm.TestCommand1">
+            <summary>
+            Gets or sets test command1.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.FooTestVm.TestCommand2">
+            <summary>
+            Gets or sets test command2.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="T:Hstar.WpfLibrary.Views.BaseListBoxWindow">
+            <summary>
+            基础的listBox窗口.
+            </summary>
+            <summary>
+            BaseListBoxWindow
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Views.BaseListBoxWindow.#ctor(System.Collections.Generic.IEnumerable{System.Object})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Hstar.WpfLibrary.Views.BaseListBoxWindow" /> class.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.Views.BaseListBoxWindow.Data">
+            <summary>
+            Gets or sets itemsSource of listBox.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.Views.BaseListBoxWindow.Ok">
+            <summary>
+            Gets or sets a value indicating whether 用户点击了确定.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.Views.BaseListBoxWindow.SelectedData">
+            <summary>
+            Gets selected data.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Views.BaseListBoxWindow.ClearSearchText">
+            <summary>
+            Clear search text box's text.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Views.BaseListBoxWindow.ListBoxItem_OnPreviewMouseDoubleClick">
+            <summary>
+            Handle the double click event of listbox item.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Views.BaseListBoxWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Hstar.WpfLibrary.Views.BaseNameWindow">
+            <summary>
+            基础的命名窗口.
+            </summary>
+            <summary>
+            BaseNameWindow
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Views.BaseNameWindow.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Hstar.WpfLibrary.Views.BaseNameWindow" /> class.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.Views.BaseNameWindow.Result">
+            <summary>
+            Gets or sets value name of text box.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.Views.BaseNameWindow.IsValid">
+            <summary>
+            Gets or sets a value indicating whether this instance's <see cref="P:Hstar.WpfLibrary.Views.BaseNameWindow.Result" /> is valid.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.Views.BaseNameWindow.Ok">
+            <summary>
+            Gets or sets a value indicating whether <see cref="F:Hstar.WpfLibrary.Views.BaseNameWindow.OkBtn" /> has been clicked.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="E:Hstar.WpfLibrary.Views.BaseNameWindow.PropertyChanged">
+            <inheritdoc />
+        </member>
+        <member name="M:Hstar.WpfLibrary.Views.BaseNameWindow.OnPropertyChanged(System.String)">
+            <summary>
+            </summary>
+            <param name="propertyName"></param>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Views.BaseNameWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Hstar.WpfLibrary.Views.BaseView">
+            <summary>
+            Basically the base template of all views.
+            </summary>
+            <remarks>
+            <para>
+            绑定了父窗口的Closed,Closing事件,
+            <b>
+            一般不应使用userControl自带的width,height,min/maxWidth和min/maxHeight来设置尺寸.
+            </b>
+            </para>
+            <para>
+            <see cref="T:Hstar.WpfLibrary.Views.BaseView" />之间可以通过<see cref="P:Hstar.WpfLibrary.Views.BaseView.ViewBag" />传递数据.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Views.BaseView.OnViewModelChanged(System.Object,System.Object)">
+            <summary>
+            called when this view model changed
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Views.BaseView.Close">
+            <summary>
+            close the window that host this base view
+            </summary>
+        </member>
+        <member name="E:Hstar.WpfLibrary.Views.BaseView.Closed">
+            <summary>
+            listen to parent window's closed event
+            </summary>
+        </member>
+        <member name="E:Hstar.WpfLibrary.Views.BaseView.Closing">
+            <summary>
+            listen to parent window's closing event
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.Views.BaseView.ViewBag">
+            <summary>
+            Used to share additional data between views.
+            <remarks>
+            viewBag do not implements INotifyPropertyChanged
+            so it's user's obligation to sync view model with viewBag;
+            you can sync view bag in Loaded event.
+            </remarks>
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.Views.BaseView.ViewModelObject">
+            <summary>
+            View model object which is set data context when its value is set.
+            </summary>
+        </member>
+        <member name="T:Hstar.WpfLibrary.Views.BaseView`1">
+            <summary>
+            generic version of <see cref="T:Hstar.WpfLibrary.Views.BaseView" />
+            </summary>
+            <typeparam name="TVm"></typeparam>
+        </member>
+        <member name="P:Hstar.WpfLibrary.Views.BaseView`1.ViewModel">
+            <summary>
+            The view model associated with this page
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Views.BaseView`1.#ctor">
+            <summary>
+            default ctor
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Views.BaseView`1.#ctor(`0)">
+            <summary>
+            default ctor with vm
+            </summary>
+            <param name="vm"></param>
+        </member>
+        <member name="T:Hstar.WpfLibrary.Views.BaseWindow">
+            <summary>
+            基础窗口.
+            </summary>
+            <summary>
+            BaseWindow
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Views.BaseWindow.#ctor(Hstar.WpfLibrary.ViewModels.ApplicationView,Hstar.WpfLibrary.ViewModels.BaseWindowVm)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Hstar.WpfLibrary.Views.BaseWindow" /> class.
+            </summary>
+            <param name="view"></param>
+            <param name="vm"></param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Views.BaseWindow.IsOpen(Hstar.WpfLibrary.ViewModels.ApplicationView)">
+            <summary>
+            判断给定的<see cref="T:Hstar.WpfLibrary.ViewModels.ApplicationView" />是否已经作为起始视图而打开.
+            </summary>
+            <param name="view"></param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Views.BaseWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Hstar.WpfLibrary.Views.ViewHost">
+            <summary>
+            视图切换器.
+            </summary>
+            <remarks>
+            设置<see cref="P:Hstar.WpfLibrary.Views.ViewHost.CurrentView" />时会触发视图改变事件,如果与当前的<see cref="T:Hstar.WpfLibrary.ViewModels.ApplicationView" />
+            一致则会重新设置<see cref="P:Hstar.WpfLibrary.Views.ViewHost.CurrentViewModel" />,否则会导航到新的视图.
+            </remarks>
+            <summary>
+            ViewHost
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Views.ViewHost.#ctor">
+            <summary>
+            default ctor
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.Views.ViewHost.CurrentViewModel">
+            <summary>
+            clr wrapper of <seealso cref="F:Hstar.WpfLibrary.Views.ViewHost.CurrentViewModelProperty" />
+            </summary>
+        </member>
+        <member name="F:Hstar.WpfLibrary.Views.ViewHost.CurrentViewModelProperty">
+            <summary>
+            dp of <seealso cref="P:Hstar.WpfLibrary.Views.ViewHost.CurrentViewModel" />, default value is null
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.Views.ViewHost.CurrentView">
+            <summary>
+            clr wrapper of <seealso cref="F:Hstar.WpfLibrary.Views.ViewHost.CurrentViewProperty" />
+            </summary>
+        </member>
+        <member name="F:Hstar.WpfLibrary.Views.ViewHost.CurrentViewProperty">
+            <summary>
+            dp of <seealso cref="P:Hstar.WpfLibrary.Views.ViewHost.CurrentView" />,default value is default&lt;<seealso cref="T:Hstar.WpfLibrary.ViewModels.ApplicationView" />&gt;
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Views.ViewHost.OnCurrentViewCoerced(System.Windows.DependencyObject,System.Object)">
+            <summary>
+            called when <see cref="P:Hstar.WpfLibrary.Views.ViewHost.CurrentView" /> is about to change
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Views.ViewHost.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Hstar.WpfLibrary.Views.ComponentLibraryView">
+            <summary>
+            构件库视图
+            </summary>
+            <remarks></remarks>
+            <summary>
+            ComponentLibraryView
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Views.ComponentLibraryView.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Hstar.WpfLibrary.Views.ComponentLibraryView" /> class.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Views.ComponentLibraryView.#ctor(Hstar.WpfLibrary.ViewModels.ComponentLibraryVm)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Hstar.WpfLibrary.Views.ComponentLibraryView" /> class.
+            </summary>
+            <param name="vm">
+            <see cref="T:Hstar.WpfLibrary.ViewModels.ComponentLibraryVm" />
+            </param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Views.ComponentLibraryView.SetComboBoxSelectedItem(System.String)">
+            <summary>
+            将当前所选工程类别定为"水闸工程"
+            </summary>
+            <param name="directoryName"></param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Views.ComponentLibraryView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Hstar.WpfLibrary.Views.TemplateArrangeView">
+            <summary>
+            快速模板布置视图.
+            </summary>
+            <summary>
+            TemplateArrangeView
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Views.TemplateArrangeView.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Hstar.WpfLibrary.Views.TemplateArrangeView" /> class.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Views.TemplateArrangeView.#ctor(Hstar.WpfLibrary.ViewModels.TemplateArrangeVm)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Hstar.WpfLibrary.Views.TemplateArrangeView" /> class.
+            </summary>
+            <param name="vm"></param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Views.TemplateArrangeView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Hstar.WpfLibrary.Views.FooTest">
+            <summary>
+            Interaction logic for FooTest.xaml
+            </summary>
+            <summary>
+            FooTest
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Views.FooTest.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Hstar.WpfLibrary.Views.FooTest" /> class.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Views.FooTest.#ctor(Hstar.WpfLibrary.ViewModels.FooTestVm)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Hstar.WpfLibrary.Views.FooTest" /> class.
+            </summary>
+            <param name="vm"></param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Views.FooTest.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
+            </summary>
+        </member>
+    </members>
+</doc>

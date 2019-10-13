@@ -1,0 +1,18 @@
+2019-10-13 09:11:02.505 +08:00 [DBG] 导航出错
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 Hstar.WpfLibrary.Views.ViewHost.<>c__DisplayClass9_0.<OnCurrentViewCoerced>b__0() 位置 C:\Users\Edward Zhang\Desktop\三维协同可视化平台(水闸工程)\Code\Hstar.RevitAddIn.Sluice\Hstar.WpfLibrary\Views\Base\ViewHost.xaml.cs:行号 102
+   在 System.Windows.Threading.Dispatcher.Invoke[TResult](Func`1 callback, DispatcherPriority priority, CancellationToken cancellationToken, TimeSpan timeout)
+   在 System.Windows.Threading.Dispatcher.Invoke[TResult](Func`1 callback)
+   在 Hstar.WpfLibrary.Views.ViewHost.OnCurrentViewCoerced(DependencyObject d, Object basevalue) 位置 C:\Users\Edward Zhang\Desktop\三维协同可视化平台(水闸工程)\Code\Hstar.RevitAddIn.Sluice\Hstar.WpfLibrary\Views\Base\ViewHost.xaml.cs:行号 98
+2019-10-13 09:11:02.725 +08:00 [DBG] 导航出错
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 Hstar.WpfLibrary.Views.ViewHost.<>c__DisplayClass9_0.<OnCurrentViewCoerced>b__0() 位置 C:\Users\Edward Zhang\Desktop\三维协同可视化平台(水闸工程)\Code\Hstar.RevitAddIn.Sluice\Hstar.WpfLibrary\Views\Base\ViewHost.xaml.cs:行号 102
+   在 System.Windows.Threading.Dispatcher.Invoke[TResult](Func`1 callback, DispatcherPriority priority, CancellationToken cancellationToken, TimeSpan timeout)
+   在 System.Windows.Threading.Dispatcher.Invoke[TResult](Func`1 callback)
+   在 Hstar.WpfLibrary.Views.ViewHost.OnCurrentViewCoerced(DependencyObject d, Object basevalue) 位置 C:\Users\Edward Zhang\Desktop\三维协同可视化平台(水闸工程)\Code\Hstar.RevitAddIn.Sluice\Hstar.WpfLibrary\Views\Base\ViewHost.xaml.cs:行号 98
+2019-10-13 09:11:02.830 +08:00 [DBG] 导航出错
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 Hstar.WpfLibrary.Views.ViewHost.<>c__DisplayClass9_0.<OnCurrentViewCoerced>b__0() 位置 C:\Users\Edward Zhang\Desktop\三维协同可视化平台(水闸工程)\Code\Hstar.RevitAddIn.Sluice\Hstar.WpfLibrary\Views\Base\ViewHost.xaml.cs:行号 102
+   在 System.Windows.Threading.Dispatcher.Invoke[TResult](Func`1 callback, DispatcherPriority priority, CancellationToken cancellationToken, TimeSpan timeout)
+   在 System.Windows.Threading.Dispatcher.Invoke[TResult](Func`1 callback)
+   在 Hstar.WpfLibrary.Views.ViewHost.OnCurrentViewCoerced(DependencyObject d, Object basevalue) 位置 C:\Users\Edward Zhang\Desktop\三维协同可视化平台(水闸工程)\Code\Hstar.RevitAddIn.Sluice\Hstar.WpfLibrary\Views\Base\ViewHost.xaml.cs:行号 98

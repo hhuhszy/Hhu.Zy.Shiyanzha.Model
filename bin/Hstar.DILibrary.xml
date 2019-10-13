@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Hstar.DILibrary</name>
+    </assembly>
+    <members>
+        <member name="T:Hstar.DILibrary.DIFactory">
+            <summary>
+            依赖注入工厂.
+            </summary>
+            <remarks>
+            <para>
+            将<see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" />的扩展方法(一般文件名为ServiceCollectionExtension.cs)复制到含有启动项的项目开头处中,
+            </para>
+            <para>调用<see cref="P:Hstar.DILibrary.DIFactory.ServiceCollection" />来使用这些扩展方法,最后 调用<see cref="M:Hstar.DILibrary.DIFactory.Build" />或者<see cref="M:Hstar.DILibrary.DIFactory.BuildDefault" />,</para>
+            <para>在不含启动项的class library中,通过<see cref="M:Hstar.DILibrary.DIFactory.Service``1" /> 方法获得需要的对象.</para>
+            <para>一般会在DI.cs文件中写一系列的<see cref="M:Hstar.DILibrary.DIFactory.Service``1" />方法来统一获得已注册的对象</para>
+            </remarks>
+        </member>
+        <member name="P:Hstar.DILibrary.DIFactory.ServiceCollection">
+            <summary>
+            Gets service collection.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.DILibrary.DIFactory.Service``1">
+            <summary>
+            获取已注册的服务,若未build或者未注册将返回该类型的默认值.
+            </summary>
+            <returns></returns>
+            <typeparam name="T"></typeparam>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.DILibrary.DIFactory.Build">
+            <summary>
+            Build <see cref="P:Hstar.DILibrary.DIFactory.ServiceCollection" />.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.DILibrary.DIFactory.BuildDefault">
+            <summary>
+            Build <see cref="P:Hstar.DILibrary.DIFactory.ServiceCollection" /> with default configuration.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="T:Hstar.DILibrary.AddMySerilogServiceExtension">
+            <summary>
+            Extension method of adding serilog service
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.DILibrary.AddMySerilogServiceExtension.AddMySerilogService(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            添加serilog日志服务,debug级别及以上写入控制台,information级别及以上写入Logs文件夹.
+            </summary>
+            <param name="sc"></param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+    </members>
+</doc>
