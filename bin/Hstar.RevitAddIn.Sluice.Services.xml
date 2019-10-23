@@ -78,6 +78,287 @@
             <param name="familyName"></param>
             <remarks></remarks>
         </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.IGatePierStressCalculationService">
+            <summary>
+            RetainingWallCalculation service
+            </summary>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.IGatePierStressCalculationService.GetGatePierParameters">
+            <summary>
+            用于获取挡土墙参数的方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.IGatePierStressCalculationService.GatePierStressCalculation(Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.GatePierStressCalculationRevitModel)">
+            <summary>
+            用于计算挡土墙稳定的方法
+            </summary>
+            <param name="gatePierDimensions">门槽数据</param>
+            <param name="gatePierStressCalculationRevitModel">由于该项目禁止引用revit api,所以需要模拟revit对象创建所需的模型.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.GatePierStressCalculationRevitModel">
+            <summary>
+            由于该项目禁止引用revit api,所以需要模拟revit对象创建所需的模型.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.GatePierStressCalculationRevitModel.PierLength">
+            <summary>
+            闸墩长度
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.GatePierStressCalculationRevitModel.PierWidth">
+            <summary>
+            闸墩宽度
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.GatePierStressCalculationRevitModel.PierHeight">
+            <summary>
+            闸墩高度
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.GatePierStressCalculationRevitModel.ConcWgt">
+            <summary>
+            混凝土容重
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.GatePierStressCalculationRevitModel.PierDistance">
+            <summary>
+            闸墩净距
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.GatePierStressCalculationRevitModel.PierType">
+            <summary>
+            闸墩类型
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.GatePierStressCalculationRevitModel.PierLevel">
+            <summary>
+            闸墩级别
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.GatePierStressCalculationRevitModel.UpstreamLevel">
+            <summary>
+            上游水位
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.GatePierStressCalculationRevitModel.DownstreamLevel">
+            <summary>
+            下游水位
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.GatePierStressCalculationRevitModel.SluiceBottomLevel">
+            <summary>
+            闸底高程
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.GatePierStressCalculationRevitModel.FetchLength">
+            <summary>
+            风区长度
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.GatePierStressCalculationRevitModel.WindSpeed">
+            <summary>
+            计算风速
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.GatePierStressCalculationRevitModel.AverageDepth">
+            <summary>
+            平均水深
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.GatePierStressCalculationRevitModel.DeadLoad">
+            <summary>
+            上部结构自重
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.GatePierStressCalculationRevitModel.SaggingMoment">
+            <summary>
+            向下游弯矩
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.GatePierStressCalculationRevitModel.HoggingMoment">
+            <summary>
+            向上游弯矩
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.GatePierStressCalculationRevitModel.DistanceToUpstreamOfGatePier_1">
+            <summary>
+            第一个检修闸门距闸墩上游侧的距离
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.GatePierStressCalculationRevitModel.GateSlotWidth_1">
+            <summary>
+            第一个检修闸门的门槽宽度
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.GatePierStressCalculationRevitModel.GateSlotDepth_1">
+            <summary>
+            第一个检修闸门的门槽深度
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.GatePierStressCalculationRevitModel.DistanceToUpstreamOfGatePier_2">
+            <summary>
+            第一个工作闸门距闸墩上游侧的距离
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.GatePierStressCalculationRevitModel.GateSlotWidth_2">
+            <summary>
+            第一个工作闸门的门槽宽度
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.GatePierStressCalculationRevitModel.GateSlotDepth_2">
+            <summary>
+            第一个工作闸门的门槽深度
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.GatePierStressCalculationRevitModel.DistanceToUpstreamOfGatePier_3">
+            <summary>
+            第二个检修闸门距闸墩上游侧的距离
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.GatePierStressCalculationRevitModel.GateSlotWidth_3">
+            <summary>
+            第二个检修闸门的门槽宽度
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.GatePierStressCalculationRevitModel.GateSlotDepth_3">
+            <summary>
+            第二个检修闸门的门槽深度
+            </summary>
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.RetainingWallCalculationRevitModel">
+            <summary>
+            由于该项目禁止引用revit api,所以需要模拟revit对象创建所需的模型.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.RetainingWallCalculationRevitModel.FrontWl">
+            <summary>
+            墙前水位
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.RetainingWallCalculationRevitModel.BehindWl">
+            <summary>
+            墙后水位
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.RetainingWallCalculationRevitModel.FrontSl">
+            <summary>
+            墙前土高
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.RetainingWallCalculationRevitModel.BehindSl">
+            <summary>
+            墙后土高
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.RetainingWallCalculationRevitModel.OwEquAgl">
+            <summary>
+            水上等值内摩擦角
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.RetainingWallCalculationRevitModel.UwEquAgl">
+            <summary>
+            水下等值内摩擦角
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.RetainingWallCalculationRevitModel.OwEarthWgt">
+            <summary>
+            水上天然土容重
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.RetainingWallCalculationRevitModel.ConcWgt">
+            <summary>
+            混凝土容重
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.RetainingWallCalculationRevitModel.UwEarthWgt">
+            <summary>
+            水下天然土容重
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.RetainingWallCalculationRevitModel.EmpFrictionCoefficient">
+            <summary>
+            经验摩擦系数
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.RetainingWallCalculationRevitModel.InternalFrictionAngle">
+            <summary>
+            内摩擦角
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.RetainingWallCalculationRevitModel.Cohesion">
+            <summary>
+            凝聚力
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.RetainingWallCalculationRevitModel.OmpositeFrictionCoefficient">
+            <summary>
+            综合摩擦系数
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.RetainingWallCalculationRevitModel.WhetherEarthquake">
+            <summary>
+            是否地震工况
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.RetainingWallCalculationRevitModel.θe">
+            <summary>
+            地震参数1
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.RetainingWallCalculationRevitModel.Б">
+            <summary>
+            地震参数2
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.RetainingWallCalculationRevitModel.φ1">
+            <summary>
+            地震参数3
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.RetainingWallCalculationRevitModel.φ2">
+            <summary>
+            地震参数4
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.RetainingWallCalculationRevitModel.LoadingCombination">
+            <summary>
+            荷载组合
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.RetainingWallCalculationRevitModel.RetainingWallLevel">
+            <summary>
+            挡土墙级别
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.RetainingWallCalculationRevitModel.FoundationType">
+            <summary>
+            地基类型
+            </summary>
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.IRetainingWallCalculationService">
+            <summary>
+            RetainingWallCalculation service
+            </summary>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.IRetainingWallCalculationService.ChooseRetainingWall(System.String@)">
+            <summary>
+            用于获取挡土墙参数的方法
+            </summary>
+            <param name="retainingWallType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.IRetainingWallCalculationService.StabilityCalculation(System.Windows.Media.SolidColorBrush[]@,System.Double[],Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.RetainingWallCalculationRevitModel)">
+            <summary>
+            用于计算挡土墙稳定的方法
+            </summary>
+            <param name="retainingWallDimensions">挡土墙尺寸数据</param>
+            <param name="retainingWallCalculationRevitModel">由于该项目禁止引用revit api,所以需要模拟revit对象创建所需的模型.</param>
+            <returns></returns>
+        </member>
         <member name="T:Hstar.RevitAddIn.Sluice.Services.BuiltInCType">
             <summary>
             <see cref="T:Hstar.RevitAddIn.Sluice.Services.CustomRevitType" />的合理的枚举.
@@ -208,6 +489,30 @@
             <param name="filename"></param>
             <remarks></remarks>
         </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Services.IRevitDocumentInfo">
+            <summary>
+            提供revit文档信息查询服务.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.IRevitDocumentInfo.GetValidFamiliesByCustomRevitType(Hstar.RevitAddIn.Sluice.Services.BuiltInCType)">
+            <summary>
+            给定<see cref="T:Hstar.RevitAddIn.Sluice.Services.CustomRevitType" />返回合法的revit族.
+            </summary>
+            <param name="builtInCType"></param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.IRevitDocumentInfo.GetValidSymbolsByFamily(System.String)">
+            <summary>
+            给定族名称,返回合法的revit族类型
+            </summary>
+            <param name="family"></param>
+            <returns></returns>
+            <remarks>
+            revit中族的名称无论类别是否相同,名称都是唯一的.但是族类型名称却不是唯一的.
+            </remarks>
+        </member>
         <member name="T:Hstar.RevitAddIn.Sluice.Services.BaseJsonService">
             <summary>
             基础的Json服务.
@@ -294,6 +599,134 @@
             <param name="filename"></param>
             <param name="formatting"></param>
             <remarks></remarks>
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Services.PlateStressCalData">
+            <summary>
+            由于该项目禁止引用revit api,所以需要模拟revit对象创建所需的模型.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.PlateStressCalData.Result">
+            <summary>
+            计算结果
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.PlateStressCalData.GridUpper">
+            <summary>
+            上游弯矩图所在grid
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.PlateStressCalData.GridDown">
+            <summary>
+            上游弯矩图所在grid
+            </summary>
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Services.WorkingConditionType">
+            <summary>
+            工况枚举
+            </summary>
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Services.IPlateStressCalService">
+            <summary>
+            底板应力计算接口
+            </summary>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.IPlateStressCalService.Calculate(Hstar.RevitAddIn.Sluice.Services.PlateStressCalData)">
+            <summary>
+            计算
+            </summary>
+            <returns>各个工况下的弯矩值</returns>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.IPlateStressCalService.DrawLines(Hstar.RevitAddIn.Sluice.Services.PlateStressCalData)">
+            <summary>
+            画图
+            </summary>
+            <param name="pscData"></param>
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Services.ISettlementCalService">
+            <summary>
+            沉降计算接口
+            </summary>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.ISettlementCalService.ChoosePlate">
+            <summary>
+            选择底板获得长宽
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.ISettlementCalService.ChooseLoad">
+            <summary>
+            选取荷载计算得到均布荷载值
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.ISettlementCalService.Impl(Hstar.RevitAddIn.Sluice.Services.SettlementCalculationData)">
+            <summary>
+            计算
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Services.SettlementCalculationData">
+            <summary>
+            由于该项目禁止引用revit api,所以需要模拟revit对象创建所需的模型.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.SettlementCalculationData.L">
+            <summary>
+            底板长
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.SettlementCalculationData.H">
+            <summary>
+            底板宽
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.SettlementCalculationData.VerticalLoad">
+            <summary>
+            垂直荷载
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.SettlementCalculationData.SaturatedUnitWeight">
+            <summary>
+            土层饱和土容重的值组成的数组
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.SettlementCalculationData.SaturatedUnitWeightArray">
+            <summary>
+            土层饱和土容重的值组成的数组
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.SettlementCalculationData.SoilLayerBottomLevelArray">
+            <summary>
+            每层土层的底部高程组成的数组
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.SettlementCalculationData.Settlement">
+            <summary>
+            沉降值
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.SettlementCalculationData.DeadWeight">
+            <summary>
+            荷载
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.SettlementCalculationData.NaturalUnitWeight">
+            <summary>
+            天然土容重
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.SettlementCalculationData.WaterUnitWeight">
+            <summary>
+            水容重
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Services.SettlementCalculationData.DepthOfEmbedment">
+            <summary>
+            地基埋深
+            </summary>
         </member>
         <member name="T:Hstar.RevitAddIn.Sluice.Services.FooRevitModel">
             <summary>

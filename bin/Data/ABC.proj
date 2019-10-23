@@ -1,0 +1,35 @@
+{
+"Name": "ABC",
+"Data": [
+{
+"Name": "SEA_MANTLE",
+"Location": "50,200",
+"Size": "500,3333",
+"HasParting": true
+},
+{
+"Name": "LOCK_CHAMBER_BOTTOM_PLATE",
+"Location": "552,-3689",
+"Size": "333,11111",
+"HasParting": false
+},
+{
+"Name": "BOTTOM_PROTECTION",
+"Location": "885,1116.5",
+"Size": "300,1500",
+"HasParting": true
+},
+{
+"Name": "BLANKET",
+"Location": "1187,866.5",
+"Size": "500,2000",
+"HasParting": true
+},
+{
+"Name": "LOCK_CHAMBER_BOTTOM_PLATE",
+"Location": "1689,766.5",
+"Size": "400,2200",
+"HasParting": false
+}
+]
+}

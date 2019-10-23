@@ -6,7 +6,7 @@
     <members>
         <member name="T:Hstar.RevitAddIn.Sluice.App">
             <summary>
-            程序入口点
+            序入口点
             </summary>
             <remarks>
             <para>通过<see cref="P:Hstar.RevitAddIn.Sluice.App.Instance" />来访问成员. </para>
@@ -62,7 +62,7 @@
             </para>
             <para>6.<b>创建外部命令</b></para>
             <para>在Hstar.RevitAddIn.Sluice中/ExternalCommands/Test文件夹下添加FooTestCmd,继承自BaseExternalCommand.如果FooTestCmd预定每次仅打开一个窗口,可以调用BaseWindow的IsOpen这个静态方法检查FooTest是否曾经打开过;此外,为了访问BaseExternalCommand</para>
-            <para>资源,建议添加一个静态的Instance访问路径.</para>
+            <para>资源,建议添加一个静态的Instance访问路径.新建BaseWindow实例,传入ApplicationView.FooTest构造参数,绑定revit窗口句柄.</para>
             <para>7.<b>实现服务接口</b></para>
             <para>
             在Hstar.RevitAddIn.Sluice中Services/Test文件夹下添加FooServiceImpl.cs,实现5中的IFooService.实现IFooService时可以调用FooTestCmd.Instance.XX来获得revit
@@ -72,10 +72,10 @@
             <para>在StartUp中添加IFooService服务.</para>
             <para>9.<b>使用服务接口</b></para>
             <para>回到Hstar.WpfLibrary中的FooTestVm中,在其中调用DIFactory.Service&lt;IFooService&gt;的相关方法.</para>
-            <para>10.<b>添加窗口启动代码</b></para>
-            <para>回到Hstar.RevitAddIn.Sluice中,在FooTestCmd启动窗口,新建BaseWindow实例,传入ApplicationView.FooTest构造参数,绑定revit窗口句柄.</para>
-            <para>11.<b>添加RevitRibbon</b></para>
+            <para>10.<b>添加RevitRibbon</b></para>
             <para>在Hstar.RevitAddIn.Sluice中App.cs里的CreateRibbonUi私有方法中添加panel或者在StartUp中添加.</para>
+            <para>11.<b>编译后处理</b></para>
+            <para>将编译好的内容拷贝到安装目录下,注意Data目录的内容拷贝到data文件夹下.</para>
             <para>
             <b>
             <font color="#FF0000">
@@ -190,6 +190,70 @@
         <member name="M:Hstar.RevitAddIn.Sluice.ExternalCommands.ComponentLibraryCmd.Execute">
             <inheritdoc />
         </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.ExternalCommands.GatePierStressCalculationCmd">
+            <summary>
+            Foo Test External Command.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.ExternalCommands.GatePierStressCalculationCmd.Instance">
+            <summary>
+            Gets static access to this instance.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.ExternalCommands.GatePierStressCalculationCmd.Execute">
+            <inheritdoc />
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.ExternalCommands.RetainingWallCalculationCmd">
+            <summary>
+            Foo Test External Command.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.ExternalCommands.RetainingWallCalculationCmd.Instance">
+            <summary>
+            Gets static access to this instance.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.ExternalCommands.RetainingWallCalculationCmd.Execute">
+            <inheritdoc />
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.ExternalCommands.PlatStressCalCmd">
+            <summary>
+            构件库外部命令.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.ExternalCommands.PlatStressCalCmd.Instance">
+            <summary>
+            Gets or sets access to <see cref="T:Hstar.RevitAddIn.Sluice.ExternalCommands.PlatStressCalCmd" /> instance.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.ExternalCommands.PlatStressCalCmd.Execute">
+            <inheritdoc />
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.ExternalCommands.SettlementCalCmd">
+            <summary>
+            构件库外部命令.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.ExternalCommands.SettlementCalCmd.Instance">
+            <summary>
+            Gets or sets access to <see cref="T:Hstar.RevitAddIn.Sluice.ExternalCommands.SettlementCalCmd" /> instance.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.ExternalCommands.SettlementCalCmd.Execute">
+            <inheritdoc />
+        </member>
         <member name="T:Hstar.RevitAddIn.Sluice.ExternalCommands.TemplateArrangeCmd">
             <summary>
             模板快速布置外部命令.
@@ -280,6 +344,11 @@
         <member name="P:Hstar.RevitAddIn.Sluice.Helper.Const.Family">
             <summary>
             family path
+            </summary>
+        </member>
+        <member name="P:Hstar.RevitAddIn.Sluice.Helper.Const.Data">
+            <summary>
+            data path
             </summary>
         </member>
         <member name="T:Hstar.RevitAddIn.Sluice.Helper.DocumentExtension">
@@ -452,6 +521,27 @@
             <param name="availability">type of <see cref="T:Autodesk.Revit.UI.IExternalCommandAvailability" /></param>
             <returns></returns>
         </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Services.DefaultDeadweightCalculationService">
+            <summary>
+            结构自重计算的Service
+            </summary>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.DefaultDeadweightCalculationService.DeadweightCalculate(System.Collections.Generic.IList{Autodesk.Revit.DB.Element},Autodesk.Revit.DB.XYZ,System.Double@,System.Double@)">
+            <summary>
+            自重计算
+            </summary>
+            <param name="elements">进行自重计算的对象集合</param>
+            <param name="origin">计算弯矩所用的原点</param>
+            <param name="deadWeight">自重值(单位kN)</param>
+            <param name="moment">弯矩值（单位kNm）</param>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.DefaultDeadweightCalculationService.GetTargetSolids(Autodesk.Revit.DB.Element)">
+            <summary>
+            得到传入元素的所有solid
+            </summary>
+            <param name="element"></param>
+            <returns></returns>
+        </member>
         <member name="T:Hstar.RevitAddIn.Sluice.Services.DefaultCheckLoadedService">
             <inheritdoc />
         </member>
@@ -488,6 +578,117 @@
         <member name="M:Hstar.RevitAddIn.Sluice.Services.DefaultFileSystemService.GetDataRoot">
             <inheritdoc />
         </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Services.DefaultGatePierStressCalculationService">
+            <summary>
+            一个<see cref="T:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.IGatePierStressCalculationService" />的实现.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.DefaultGatePierStressCalculationService.StressCalculation(System.Double[]@,System.Double[]@,System.Double@,System.Double[],System.Double[],System.Double[],System.Double[])">
+            <summary>
+            闸墩应力计算
+            </summary>
+            <param name="lengthwaysStrsss">纵向应力</param>
+            <param name="crosswiseStress">横向应力</param>
+            <param name="sigmaZL">边墩主拉应力</param>
+            <param name="gatePierParameters">闸墩参数</param>
+            <param name="enviromentalParameters">环境参数</param>
+            <param name="upperGravityLoad">上部结构荷载</param>
+            <param name="gateSlotParameters">门槽参数</param>
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Services.DefaultPlateCalService">
+            <summary>
+                计算底板应力
+            </summary>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.DefaultPlateCalService.Calculate(Hstar.RevitAddIn.Sluice.Services.PlateStressCalData)">
+            <summary>
+                主要计算程序
+            </summary>
+            <returns>
+                返回三个工况下的上下游各个点的弯矩值组成的数组的字典
+            </returns>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.DefaultPlateCalService.DrawLines(Hstar.RevitAddIn.Sluice.Services.PlateStressCalData)">
+            <summary>
+                画图，将各个工况下的弯矩图画出来
+            </summary>
+            <param name="pscData"></param>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.DefaultPlateCalService.DesignAndCheck(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double[],System.Double[],System.Double[],System.Double[],System.Double[],System.Double[]@,System.Double[]@)">
+            <summary>
+                计算设计和校核两种相似工况
+            </summary>
+            <param name="upperPlateH"></param>
+            <param name="downPlateH"></param>
+            <param name="upperWaterLevel">上游水位</param>
+            <param name="downWaterLevel">下游水位</param>
+            <param name="B">底板顺水流长</param>
+            <param name="L">底板垂直水流长</param>
+            <param name="plateHeight">底板厚</param>
+            <param name="keyWallHeight">齿墙厚</param>
+            <param name="pierMiddleWidth">中墩宽</param>
+            <param name="pierSideWidth">边墩宽</param>
+            <param name="upperB">底板上游宽</param>
+            <param name="downB">底板下游宽，上下游的界限是以闸门上游侧底边为界限</param>
+            <param name="plateUpLevel">底板向上的面的高程</param>
+            <param name="zhishuiLevel">止水高程</param>
+            <param name="Hm">水域平均水深</param>
+            <param name="V0">计算风速，设计工况下要乘以1.5，校核不用</param>
+            <param name="D">风区长度,m</param>
+            <param name="pinlv">累计频率</param>
+            <param name="gateWeight">闸门自重</param>
+            <param name="sigmaG1">自重</param>
+            <param name="upperStructureWeight">上游结构自重</param>
+            <param name="downStructureWeight">下游结构自重</param>
+            <param name="coefficientOfdetaQPlate">底板的不平衡剪力系数</param>
+            <param name="arrayUCLMomentCoefficient">均布荷载的弯矩系数组成的数组</param>
+            <param name="arrayCLMomentCoefficientP1">集中荷载P1的弯矩系数组成的数组</param>
+            <param name="arrayCLMomentCoefficientP2">集中荷载P2的弯矩系数组成的数组</param>
+            <param name="arrayCLSLMomentCoefficientOneToTen">集中边荷载P1~P10的弯矩系数组成的系数</param>
+            <param name="arrayCLSLMomentCoefficientElevenToFifteen">集中边荷载P11~P15的弯矩系数组成的系数</param>
+            <param name="arrayUpperMomentSum">上游弯矩和组成的数组</param>
+            <param name="arrayDownMomentSum">下游弯矩组成的数组</param>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.DefaultPlateCalService.GetSideLoad(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double@,System.Double@,System.Double@,System.Double@)">
+            <summary>
+                计算边荷载
+            </summary>
+            <param name="B">底板宽，顺水流方向</param>
+            <param name="upperB">底板上游宽</param>
+            <param name="downB">底板下游宽，上下游的界限是以闸门上游侧底边为界限</param>
+            <param name="upperP2">上游P2</param>
+            <param name="downP2">下游P2</param>
+            <param name="upperPOneToTen2">上游P'1-P'10</param>
+            <param name="upperPElevenToFifteen2">上游P'11-P'15</param>
+            <param name="downPOneToTen2">下游P'1-P'10</param>
+            <param name="downPElevenToFifteen2">下游P'11-P'15</param>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.DefaultPlateCalService.ExcelGetDataTable(System.String)">
+            <summary>
+                读取excel表格
+            </summary>
+            <param name="excelPath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.DefaultPlateCalService.GetCoefficientInGuoTable(System.Double[0:,0:],System.Double,System.Double)">
+            <summary>
+                读取郭氏表
+            </summary>
+            <param name="arrayKs"></param>
+            <param name="row"></param>
+            <param name="column"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.DefaultPlateCalService.GetCoefficientInTable(System.Double[0:,0:],System.Double,System.Double)">
+            <summary>
+                读取一般的表格，如hm/pm的表格
+            </summary>
+            <param name="arrayKs"></param>
+            <param name="row"></param>
+            <param name="column"></param>
+            <returns></returns>
+        </member>
         <member name="T:Hstar.RevitAddIn.Sluice.Services.DefaultCTypeRepoService">
             <summary>
             默认的<see cref="T:Hstar.RevitAddIn.Sluice.Services.CustomRevitType" />仓储服务.
@@ -513,6 +714,15 @@
         <member name="M:Hstar.RevitAddIn.Sluice.Services.DefaultCTypeRepoService.Save2File(System.String)">
             <inheritdoc />
         </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Services.DefaultRevitDocumentInfoService">
+            <inheritdoc />
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.DefaultRevitDocumentInfoService.GetValidFamiliesByCustomRevitType(Hstar.RevitAddIn.Sluice.Services.BuiltInCType)">
+            <inheritdoc />
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.DefaultRevitDocumentInfoService.GetValidSymbolsByFamily(System.String)">
+            <inheritdoc />
+        </member>
         <member name="T:Hstar.RevitAddIn.Sluice.Services.DefaultJsonService">
             <summary>
             默认的json服务实现.
@@ -533,6 +743,106 @@
         </member>
         <member name="M:Hstar.RevitAddIn.Sluice.Services.DefaultJsonService.Write``1(``0,System.String,Newtonsoft.Json.Formatting)">
             <inheritdoc />
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.DefaultSettlementCalService.Impl(Hstar.RevitAddIn.Sluice.Services.SettlementCalculationData)">
+            <summary>
+                计算主程序
+            </summary>
+            <param name="scData"></param>
+            <returns>返回沉降值</returns>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.DefaultSettlementCalService.ChoosePlate">
+            <summary>
+                选择底板，获得长宽
+            </summary>
+            <returns>长宽</returns>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.DefaultSettlementCalService.ChooseLoad">
+            <summary>
+                选取底板上的荷载建筑物，框选
+            </summary>
+            <returns>均布荷载的值</returns>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.DefaultSettlementCalService.GetTargetSolids(Autodesk.Revit.DB.Element)">
+            <summary>
+                获取实体
+            </summary>
+            <param name="element"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.DefaultSettlementCalService.GetManyRefByRectangle(Autodesk.Revit.UI.UIDocument)">
+            <summary>
+                框选
+            </summary>
+            <param name="doc"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Services.DefaultSettlementCalService.SelectionFilter">
+            <summary>
+                过滤
+            </summary>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.DefaultSettlementCalService.Execute(Hstar.RevitAddIn.Sluice.Services.SettlementCalculationData,System.Double[0:,0:])">
+            <summary>
+                计算的值
+            </summary>
+            <param name="data"></param>
+            <param name="epArray">e-p曲线</param>
+            <returns>沉降值</returns>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.DefaultSettlementCalService.ArrayKs">
+            <summary>
+                Ks系数表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.DefaultRetainingWallCalculationService">
+            <summary>
+            IRetainingWallCalculationService接口的实现，包括了获取参数和计算两个方法。
+            </summary>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.DefaultRetainingWallCalculationService.ChooseRetainingWall(System.String@)">
+            <summary>
+            获取挡土墙参数的方法
+            </summary>
+            <param name="retainingWallType">返回挡土墙类型的string</param>
+            <returns></returns>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.DefaultRetainingWallCalculationService.StabilityCalculation(System.Windows.Media.SolidColorBrush[]@,System.Double[],Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.RetainingWallCalculationRevitModel)">
+            <summary>
+            计算挡土墙稳定的方法
+            </summary>
+            <param name="retainingWallDimensions">挡土墙尺寸参数</param>
+            <param name="retainingWallCalculationRevitModel">vm的化身</param>
+            <returns></returns>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.DefaultRetainingWallCalculationService.RetainingWallGravity(System.Double@,System.Double@,System.Double[],System.Double[])">
+            <summary>
+            挡土墙自重计算
+            </summary>
+            <param name="totalGravity">总重力</param>
+            <param name="totalGravitymoment">总弯矩</param>
+            <param name="retainingWallParameters">几何参数</param>
+            <param name="physicalParameters">物理参数</param>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.DefaultRetainingWallCalculationService.RetainingWallStabilityCalculation(System.Double[]@,System.Double[],System.Double[],System.Double[],System.Double[])">
+            <summary>
+            挡土墙稳定计算
+            </summary>
+            <param name="result">结果参数集合，包括不均匀系数、抗滑系数、抗倾系数、最大荷载值、最小荷载值、平均荷载值</param>
+            <param name="retainingWallParameters">几何参数</param>
+            <param name="physicalParameters">物理参数</param>
+            <param name="waterLevelParameters">水位参数</param>
+            <param name="earthquakeParameters">地震参数</param>
+        </member>
+        <member name="M:Hstar.RevitAddIn.Sluice.Services.RetainingWallCalculation.DefaultRetainingWallCalculationService.SetAllowableValue(System.String,System.String,System.String)">
+            <summary>
+            根据用户的选择，设置抗滑稳定，抗倾覆，不均匀系数的允许值。
+            </summary>
+            <param name="hzzh">用户选的荷载组合值</param>
+            <param name="tzqdj">用户选的挡土墙等级值</param>
+            <param name="djlx">用户选的地基类型值</param>
+            <returns></returns>
         </member>
         <member name="T:Hstar.RevitAddIn.Sluice.Services.FooServiceImpl">
             <summary>
@@ -560,7 +870,7 @@
         </member>
         <member name="M:Hstar.RevitAddIn.Sluice.StartUp.CreateRibbon(Autodesk.Revit.UI.UIControlledApplication,System.String)">
             <summary>
-            添加revit ribbon按钮
+            添加revit ribbon按钮.
             </summary>
             <param name="application"></param>
             <param name="tabName"></param>

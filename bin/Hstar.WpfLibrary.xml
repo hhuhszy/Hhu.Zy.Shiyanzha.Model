@@ -500,6 +500,24 @@
             将所有visuals缩放到视图正中.
             </summary>
         </member>
+        <member name="T:Hstar.WpfLibrary.Controls.AddRemoveView">
+            <summary>
+            增行删行的user control
+            </summary>
+            <summary>
+            AddRemoveView
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Controls.AddRemoveView.#ctor">
+            <summary>
+            增行删行的user control
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Controls.AddRemoveView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
         <member name="T:Hstar.WpfLibrary.DI">
             <summary>
             A shorthand access class to get DI services with nice clean short code
@@ -612,6 +630,22 @@
             Gets or sets the uniform resource identifier (URI) to load resources from.
             </summary>
         </member>
+        <member name="T:Hstar.WpfLibrary.ICommands.AddRemoveCommand">
+            <summary>
+            增行删行的命令
+            </summary>
+        </member>
+        <member name="F:Hstar.WpfLibrary.ICommands.AddRemoveCommand.action">
+            <summary>
+            委托
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.ICommands.AddRemoveCommand.#ctor(System.Action)">
+            <summary>
+            增行删行的命令
+            </summary>
+            <param name="action"></param>
+        </member>
         <member name="T:Hstar.WpfLibrary.ICommands.RelayCommand">
             <summary>
             relay command
@@ -714,6 +748,30 @@
         <member name="F:Hstar.WpfLibrary.ViewModels.ApplicationView.TemplateArrange">
             <summary>
             模板快速布置.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Hstar.WpfLibrary.ViewModels.ApplicationView.SettlementWindow">
+            <summary>
+            沉降计算
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Hstar.WpfLibrary.ViewModels.ApplicationView.PlateStressCalculationWindow">
+            <summary>
+            底板应力计算
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Hstar.WpfLibrary.ViewModels.ApplicationView.RetainingWallCalculation">
+            <summary>
+            翼墙稳定计算视图.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Hstar.WpfLibrary.ViewModels.ApplicationView.GatePierStressCalculation">
+            <summary>
+            闸墩应力计算视图.
             </summary>
             <remarks></remarks>
         </member>
@@ -948,6 +1006,328 @@
             每次切换视图时都会调用此命令,要注意代码执行效率
             </remarks>
         </member>
+        <member name="M:Hstar.WpfLibrary.ViewModels.PlateStressVm.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Hstar.WpfLibrary.ViewModels.FooTestVm" /> class.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.PlateStressVm.Name">
+            <summary>
+                Gets or sets foo test name.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.PlateStressVm.Info">
+            <summary>
+                Gets or sets foo information.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.PlateStressVm.TestCommand1">
+            <summary>
+                Gets or sets test command1.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="T:Hstar.WpfLibrary.ViewModels.SettlementVm">
+            <summary>
+                嗡嗡嗡
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.ViewModels.SettlementVm.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Hstar.WpfLibrary.ViewModels.FooTestVm" /> class.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.SettlementVm.Settlement">
+            <summary>
+            沉降值
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.SettlementVm.NaturalUnitWeight">
+            <summary>
+            天然土容重
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.SettlementVm.WaterUnitWeight">
+            <summary>
+                水容重
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.SettlementVm.DepthOfEmbedment">
+            <summary>
+                地基埋深
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.SettlementVm.SelfGravity">
+            <summary>
+            自重
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.SettlementVm.VerticalLoad">
+            <summary>
+            垂直荷载
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.SettlementVm.VerticalTriLoad">
+            <summary>
+            垂直三角荷载
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.SettlementVm.HorizontalLoad">
+            <summary>
+            水平荷载
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.SettlementVm.L">
+            <summary>
+            底板长，垂直水流方向
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.SettlementVm.B">
+            <summary>
+            底板宽，顺水流方向
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.SettlementVm.DeadWeight">
+            <summary>
+            荷载
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.SettlementVm.Name">
+            <summary>
+                Gets or sets foo test name.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.SettlementVm.Info">
+            <summary>
+                Gets or sets foo information.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.SettlementVm.TestCommand1">
+            <summary>
+                Gets or sets test command1.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.SettlementVm.TestCommand2">
+            <summary>
+                Gets or sets test command2.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.SettlementVm.TestCommand3">
+            <summary>
+                Gets or sets test command2.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.SettlementVm.TestCommand4">
+            <summary>
+                Gets or sets test command2.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="T:Hstar.WpfLibrary.ViewModels.GatePierStressCalculationVm">
+            <summary>
+            Foo Test View Model.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.WpfLibrary.ViewModels.GatePierStressCalculationVm.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Hstar.WpfLibrary.ViewModels.GatePierStressCalculationVm" /> class.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.GatePierStressCalculationVm.PierLength">
+            <summary>
+            闸墩长度
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.GatePierStressCalculationVm.PierWidth">
+            <summary>
+            闸墩宽度
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.GatePierStressCalculationVm.PierHeight">
+            <summary>
+            闸墩高度
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.GatePierStressCalculationVm.ConcWgt">
+            <summary>
+            混凝土容重
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.GatePierStressCalculationVm.PierDistance">
+            <summary>
+            闸墩净距
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.GatePierStressCalculationVm.PierType">
+            <summary>
+            闸墩类型
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.GatePierStressCalculationVm.PierLevel">
+            <summary>
+            闸墩级别
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.GatePierStressCalculationVm.UpstreamLevel">
+            <summary>
+            上游水位
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.GatePierStressCalculationVm.DownstreamLevel">
+            <summary>
+            下游水位
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.GatePierStressCalculationVm.SluiceBottomLevel">
+            <summary>
+            闸底高程
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.GatePierStressCalculationVm.FetchLength">
+            <summary>
+            风区长度
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.GatePierStressCalculationVm.WindSpeed">
+            <summary>
+            计算风速
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.GatePierStressCalculationVm.AverageDepth">
+            <summary>
+            平均水深
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.GatePierStressCalculationVm.DeadLoad">
+            <summary>
+            上部结构自重
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.GatePierStressCalculationVm.SaggingMoment">
+            <summary>
+            向下游弯矩
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.GatePierStressCalculationVm.HoggingMoment">
+            <summary>
+            向上游弯矩
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.GatePierStressCalculationVm.Distance">
+            <summary>
+            闸孔距离
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.GatePierStressCalculationVm.DistanceToUpstreamOfGatePier_1">
+            <summary>
+            第一个检修闸门距闸墩上游侧的距离
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.GatePierStressCalculationVm.GateSlotWidth_1">
+            <summary>
+            第一个检修闸门的门槽宽度
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.GatePierStressCalculationVm.GateSlotDepth_1">
+            <summary>
+            第一个检修闸门的门槽深度
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.GatePierStressCalculationVm.DistanceToUpstreamOfGatePier_2">
+            <summary>
+            第一个工作闸门距闸墩上游侧的距离
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.GatePierStressCalculationVm.GateSlotWidth_2">
+            <summary>
+            第一个工作闸门的门槽宽度
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.GatePierStressCalculationVm.GateSlotDepth_2">
+            <summary>
+            第一个工作闸门的门槽深度
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.GatePierStressCalculationVm.DistanceToUpstreamOfGatePier_3">
+            <summary>
+            第二个检修闸门距闸墩上游侧的距离
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.GatePierStressCalculationVm.GateSlotWidth_3">
+            <summary>
+            第二个检修闸门的门槽宽度
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.GatePierStressCalculationVm.GateSlotDepth_3">
+            <summary>
+            第二个检修闸门的门槽深度
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.GatePierStressCalculationVm.LengthwaysSigmaMax">
+            <summary>
+            纵向最大正应力
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.GatePierStressCalculationVm.LengthwaysSigmaMin">
+            <summary>
+            纵向最小正应力
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.GatePierStressCalculationVm.LengthwaysTauMax">
+            <summary>
+            纵向最大切应力
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.GatePierStressCalculationVm.CrosswiseSigmaMax">
+            <summary>
+            横向最大正应力
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.GatePierStressCalculationVm.CrosswiseSigmaMin">
+            <summary>
+            横向最小正应力
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.GatePierStressCalculationVm.CrosswiseTauMax">
+            <summary>
+            横向最大切应力
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.GatePierStressCalculationVm.SigmaZL">
+            <summary>
+            边墩主拉应力
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.GatePierStressCalculationVm.StressCalculationCommand">
+            <summary>
+            计算闸墩应力的Command
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.GatePierStressCalculationVm.GetGateSlotPositionCommand">
+            <summary>
+            获取门槽位置的Command
+            </summary>
+        </member>
         <member name="T:Hstar.WpfLibrary.ViewModels.TemplateArrangeData">
             <summary>
             Data of <see cref="T:Hstar.WpfLibrary.ViewModels.TemplateArrangeVm" />, used for robust design of building.
@@ -976,6 +1356,34 @@
             指示是否有分缝.
             </summary>
             <remarks>分缝是指当前所选择的构件按照从上游至下游的顺序的下一个构件与其是否有空隙分缝.</remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.TemplateArrangeData.Family">
+            <summary>
+            族名称.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.TemplateArrangeData.FamilySymbol">
+            <summary>
+            族类型名称.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.TemplateArrangeData.ValidFamilies">
+            <summary>
+            Gets or sets valid <see cref="P:Hstar.WpfLibrary.ViewModels.TemplateArrangeData.Family"/>.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.TemplateArrangeData.ValidSymbols">
+            <summary>
+            Gets or sets valid <see cref="P:Hstar.WpfLibrary.ViewModels.TemplateArrangeData.FamilySymbol"/>.
+            </summary>
+            <value></value>
+            <remarks></remarks>
         </member>
         <member name="T:Hstar.WpfLibrary.ViewModels.TemplateArrangeVm">
             <summary>
@@ -1096,6 +1504,240 @@
             Invokes the <see cref="E:Hstar.WpfLibrary.ViewModels.TemplateArrangeVm.Imported" />.
             </summary>
             <param name="obj"></param>
+            <remarks></remarks>
+        </member>
+        <member name="T:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm">
+            <summary>
+            Foo Test View Model.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm" /> class.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.FrontWl">
+            <summary>
+            墙前水位
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.BehindWl">
+            <summary>
+            墙后水位
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.FrontSl">
+            <summary>
+            墙前土高
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.BehindSl">
+            <summary>
+            墙后土高
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.OwEquAgl">
+            <summary>
+            水上等值内摩擦角
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.UwEquAgl">
+            <summary>
+            水下等值内摩擦角
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.OwEarthWgt">
+            <summary>
+            水上天然土容重
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.ConcWgt">
+            <summary>
+            混凝土容重
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.UwEarthWgt">
+            <summary>
+            水下天然土容重
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.EmpFrictionCoefficient">
+            <summary>
+            经验摩擦系数
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.InternalFrictionAngle">
+            <summary>
+            内摩擦角
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.Cohesion">
+            <summary>
+            凝聚力
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.OmpositeFrictionCoefficient">
+            <summary>
+            综合摩擦系数
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.WhetherEarthquake">
+            <summary>
+            是否地震工况
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.θe">
+            <summary>
+            地震参数1
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.Б">
+            <summary>
+            地震参数2
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.φ1">
+            <summary>
+            地震参数3
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.φ2">
+            <summary>
+            地震参数4
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.LoadingCombination">
+            <summary>
+            荷载组合
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.RetainingWallLevel">
+            <summary>
+            挡土墙级别
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.FoundationType">
+            <summary>
+            地基类型
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.ButtressTopWidth">
+            <summary>
+            扶壁顶宽
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.ButtressBottomWidth">
+            <summary>
+            扶壁底宽
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.ButtressThickness">
+            <summary>
+            扶壁厚度
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.ButtressHeight">
+            <summary>
+            扶壁高度
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.WingWallFrontFloorWidth">
+            <summary>
+            前趾板宽
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.WingWallWidth">
+            <summary>
+            竖墙宽
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.WingWallCavityWidth">
+            <summary>
+            空腔宽
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.WingWallBackFloorWidth">
+            <summary>
+            后趾板宽
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.WingWallHeight">
+            <summary>
+            竖墙高
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.WingWallPlateBottomWidth">
+            <summary>
+            趾板厚
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.WingWallPlateTopElevation">
+            <summary>
+            趾板顶高程
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.RetainingWallType">
+            <summary>
+            挡土墙类型
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.YitaBrush">
+            <summary>
+            Yita结果的背景色
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.KcBrush">
+            <summary>
+            Kc结果的背景色
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.K0Brush">
+            <summary>
+            K0结果的背景色
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.Yita">
+            <summary>
+            不均匀系数
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.Kc">
+            <summary>
+            抗滑系数
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.K0">
+            <summary>
+            抗倾系数
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.Fmax">
+            <summary>
+            最大应力
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.Fmin">
+            <summary>
+            最小应力
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.Faverage">
+            <summary>
+            平均应力
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.ChooseRetainingWallCommand">
+            <summary>
+            获得挡土墙尺寸参数的Command
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.ViewModels.RetainingWallCalculationVm.StabilityCalculationCommand">
+            <summary>
+            计算挡土墙稳定的Command
+            </summary>
+            <value></value>
             <remarks></remarks>
         </member>
         <member name="T:Hstar.WpfLibrary.ViewModels.FooTestVm">
@@ -1419,6 +2061,99 @@
             InitializeComponent
             </summary>
         </member>
+        <member name="T:Hstar.WpfLibrary.Views.PlateStressView">
+            <summary>
+            MainWindow.xaml 的交互逻辑
+            </summary>
+            <summary>
+            PlateStressView
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Views.PlateStressView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Hstar.WpfLibrary.Views.SettlementView">
+            <summary>
+            MainWindow.xaml 的交互逻辑
+            </summary>
+            <summary>
+            SettlementView
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Views.SettlementView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Hstar.WpfLibrary.Views.WindowepChart">
+            <summary>
+            MainWindow.xaml 的交互逻辑
+            </summary>
+            <summary>
+            WindowepChart
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Views.WindowepChart.#ctor">
+            <summary>
+            e-p曲线配置窗口
+            </summary>
+        </member>
+        <member name="P:Hstar.WpfLibrary.Views.WindowepChart.Result">
+            <summary>
+            结果
+            </summary>
+        </member>
+        <member name="E:Hstar.WpfLibrary.Views.WindowepChart.CallBack">
+            <summary>
+            委托，关闭Window时执行的操作
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Views.WindowepChart.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Hstar.WpfLibrary.Views.GatePierStressCalculationView">
+            <summary>
+            Interaction logic for FooTest.xaml
+            </summary>
+            <summary>
+            GatePierStressCalculationView
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Views.GatePierStressCalculationView.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Hstar.WpfLibrary.Views.GatePierStressCalculationView" /> class.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Views.GatePierStressCalculationView.#ctor(Hstar.WpfLibrary.ViewModels.GatePierStressCalculationVm)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Hstar.WpfLibrary.Views.GatePierStressCalculationView" /> class.
+            </summary>
+            <param name="vm"></param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Views.GatePierStressCalculationView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Hstar.WpfLibrary.Views.RetainingWallCalculationView">
+            <summary>
+            MainWindow.xaml 的交互逻辑
+            </summary>
+            <summary>
+            RetainingWallCalculationView
+            </summary>
+        </member>
+        <member name="M:Hstar.WpfLibrary.Views.RetainingWallCalculationView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
         <member name="T:Hstar.WpfLibrary.Views.TemplateArrangeView">
             <summary>
             快速模板布置视图.
@@ -1469,36 +2204,6 @@
         <member name="M:Hstar.WpfLibrary.Views.FooTest.InitializeComponent">
             <summary>
             InitializeComponent
-            </summary>
-        </member>
-        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
-            <summary>
-            GeneratedInternalTypeHelper
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
-            <summary>
-            CreateInstance
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
-            <summary>
-            GetPropertyValue
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
-            <summary>
-            SetPropertyValue
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
-            <summary>
-            CreateDelegate
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
-            <summary>
-            AddEventHandler
             </summary>
         </member>
     </members>
